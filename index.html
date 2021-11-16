@@ -179,6 +179,10 @@
 			el: {
 				full_name: 'Βασίλειος Πασιαλιώκης',
 				job_title: 'Προγραμματιστής λογισμικού (full stack)',
+				birth_year_heading: 'Έτος γέννησης',
+				birth_year: '1992',
+				military_heading: 'Στρατιωτικές Υποχρεώσεις',
+				military: 'Σε αναβολή',
 				tech_knowledge: 'Γνώσεις',
 				buzzwords: [ 'Javascript', 'PHP', 'bash', 'SQL', 'Linux', 'Vue', 'Laravel', 'Lisp', 'Python', 'CSS', 'HTML', 'Git', 'Purescript', 'Ruby' ],
 				language_knowledge: 'Γλώσσες',
@@ -241,6 +245,17 @@
 					E('section', { className: 'sidebar' }, [
 						E('section', { className: 'info' }, [
 							E('header', null, [ 'Information' ]),
+							
+							...(lang === 'el' ?
+								[
+									E('header', null, [ VARS[lang].birth_year_heading }),
+									E('div', null [ VARS[lang].birth_year ]),
+								
+									E('header', null, [ VARS[lang].military_heading }),
+									E('div', null [ VARS[lang].military ]),
+								] :
+								[])
+							
 							...Object.entries(VARS[lang].info)
 							.map(x => [
 								E('header', null, [ x[0] ]),

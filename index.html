@@ -137,10 +137,12 @@
 				skills: [ 'Software development', 'Performance optimisation', 'Refactoring legacy code', 'System administration', 'Functional programming', 'Dataflow programming', 'Literate programming', 'Translation', 'Internationalisation' ],
 				info_heading: 'Information',
 				info: {
-					'Phone': '+30 695 501 8104',
+					'Τηλέφωνο': '+30 695 501 8104',
 					'Email': 'pasivasi@outlook.com',
 					'Github': 'github.com/vaaas',
 				},
+                footer: 'This document is available online: ',
+                link: 'https://vaaas.github.io/cv/',
 				education: {
 					'Aristotle University of Thessaloniki': 'Studied as an Electrical &amp; Computer Engineer',
 					'Certificate of Proficiency in English': 'Cambridge',
@@ -195,6 +197,8 @@
 					'Email': 'pasivasi@outlook.com',
 					'Github': 'github.com/vaaas',
 				},
+                footer: 'Αυτό το έγγραφο διατίθεται και online: ',
+                link: 'https://vaaas.github.io/cv/',
 				education: {
 					'Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης': 'Τελειόφοιτος Τμήματος Ηλεκτρολόγων Μηχανικών &amp; Μηχανικών Υπολογιστών',
 					'Certificate of Proficiency in English': 'Cambridge',
@@ -234,29 +238,31 @@
 		let lang = 'en'
 
 		function render_body() {
+            const TL = VARS[lang]
+
 			return E('body', null, [
 				E('header', null, [
 					E('nav', null, Object.keys(VARS).map(x => E('span', { onclick: () => { lang = x ; replace_body() } }, [ x.toUpperCase() ]))),
-					E('h1', null, VARS[lang].full_name),
-					E('h2', null, VARS[lang].job_title),
+					E('h1', null, TL.full_name),
+					E('h2', null, TL.job_title),
 				]),
 
 				E('main', null, [
 					E('section', { className: 'sidebar' }, [
 						E('section', { className: 'info' }, [
 							E('header', null, [ 'Information' ]),
-							
+
 							...(lang === 'el' ?
 								[
-									E('header', null, [ VARS[lang].birth_year_heading }),
-									E('div', null [ VARS[lang].birth_year ]),
-								
-									E('header', null, [ VARS[lang].military_heading }),
-									E('div', null [ VARS[lang].military ]),
+									E('header', null, [ TL.birth_year_heading ]),
+									E('div', null, [ TL.birth_year ]),
+
+									E('header', null, [ TL.military_heading ]),
+									E('div', null, [ TL.military ]),
 								] :
-								[])
-							
-							...Object.entries(VARS[lang].info)
+								['']),
+
+							...Object.entries(TL.info)
 							.map(x => [
 								E('header', null, [ x[0] ]),
 								E('div', null, [ x[1] ]),
@@ -265,25 +271,25 @@
 						]),
 
 						E('section', { className: 'skills' }, [
-							E('header', null, [ VARS[lang].skills_heading ]),
-							...VARS[lang].skills.map(x => E('div', null, [ x ]))
+							E('header', null, [ TL.skills_heading ]),
+							...TL.skills.map(x => E('div', null, [ x ]))
 						]),
 
 						E('section', { className: 'buzzwords' }, [
-							E('header', null, [ VARS[lang].tech_knowledge ]),
-							E('div', null, VARS[lang].buzzwords.map(x => E('span', null, [ x, ' ' ])))
+							E('header', null, [ TL.tech_knowledge ]),
+							E('div', null, TL.buzzwords.map(x => E('span', null, [ x, ' ' ])))
 						]),
 
 						E('section', { className: 'languages' }, [
-							E('header', null, [ VARS[lang].language_knowledge ]),
-							E('div', null, VARS[lang].languages.map(x => E('span', null, [ x, ' ']))),
+							E('header', null, [ TL.language_knowledge ]),
+							E('div', null, TL.languages.map(x => E('span', null, [ x, ' ']))),
 						]),
 					]),
 
 					E('section', { className: 'xp' }, [
 						E('section', { className: 'experience' }, [
 							E('header', null, [ 'Experience', ]),
-							...VARS[lang].xp.map(x => E('section', null, [
+							...TL.xp.map(x => E('section', null, [
 								E('header', null, [ x.where ]),
 								E('div', null, [ E('em', null, [ x.from, ' — ', x.to ]) ]),
 								E('ul', null, x.what.map(x => E('li', null, [ x ])))
@@ -291,7 +297,7 @@
 						]),
 						E('section', { className: 'education' }, [
 							E('header', null, [ 'Education' ]),
-							...Object.entries(VARS[lang].education)
+							...Object.entries(TL.education)
 							.map(x => E('section', null, [
 								E('header', null, [ x[0] ]),
 								E('div', null, [ x[1] ]),
@@ -301,7 +307,7 @@
 					]),
 				]),
 
-				E('footer', null, ['This document is available online: https://vaaas.github.io/cv/'])
+				E('footer', null, [ TL.footer, TL.link])
 			])
 		}
 

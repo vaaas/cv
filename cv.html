@@ -1,0 +1,303 @@
+<?xml version='1.0'?>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+	<meta charset='utf-8'/>
+	<style>
+		/* basic */
+		:root {
+			--gray: #888;
+			--semi: #666;
+		}
+
+		html {
+			font-size: 4mm;
+			margin: auto;
+			width: 210mm;
+			line-height: 1.5em;
+			font-family: serif;
+		}
+
+		body {
+			margin: 15mm;
+			height: 100%;
+		}
+
+		section { color: var(--semi); }
+
+		section header {
+			font-weight: bold;
+			color: #000;
+		}
+
+		ul {
+			margin: 0;
+			padding-left: 1rem;
+		}
+
+		/* header */
+		body > header {
+			padding-bottom: 1rem;
+			border-bottom: 1px solid var(--gray);
+		}
+
+		body > header h1 {
+			font-size: 2rem;
+			margin: 0;
+			line-height: 1.5em;
+		}
+
+		body > header h2 {
+			font-size: 1.50rem;
+			font-weight: normal;
+			margin: 0;
+			line-height: 1.5em;
+			color: var(--semi);
+		}
+
+		body > header nav {
+			float: right;
+			cursor: pointer;
+			color: var(--gray);
+			line-height: 1.5em;
+		}
+
+		body > header nav *:hover { text-decoration: underline; }
+		body > header nav *+* { margin-left: 1em; }
+
+		/* main */
+		main { display: flex; }
+		main > section { padding-top: 1rem; }
+		main section:first-child { flex: 1; }
+		main section:last-child { flex: 1.8; }
+
+		/* sidebar */
+		.sidebar {
+			padding-right: 0.5rem;
+			padding-bottom: 1rem;
+			margin-right: 1rem;
+			border-right: 1px solid var(--gray);
+		}
+
+		.sidebar > section + section { margin-top: 2rem; }
+		.info > header:first-child { margin-bottom: 0.5rem; }
+
+		:is(.buzzwords, .languages) div span {
+			display: inline-block;
+			width: 7em;
+		}
+
+		.sidebar > section > header:first-child {
+			font-size: 1.25rem;
+			line-height: 1.5em;
+		}
+
+		/* xp */
+		.xp section + section { margin-top: 0.5rem; }
+		.xp > section + section { margin-top: 2rem; }
+
+		.xp > section > header:first-child {
+			font-size: 1.25rem;
+			margin-bottom: 1rem;
+		}
+
+		/* footer */
+		footer {
+			color: var(--gray);
+			border-top: 1px solid var(--gray);
+			padding-top: 1rem;
+		}
+
+		/* media queries */
+		@media print {
+			header nav { display: none; }
+		}
+	</style>
+	<script>
+		'use strict'
+
+		function E (name, attrs=null, children=null) {
+			const elem = document.createElement(name)
+			if (attrs)
+				for (const [k, v] of Object.entries(attrs)) elem[k] = v
+			if (children)
+				for (const x of children)
+					elem.appendChild(x instanceof Node ? x : document.createTextNode(''+x))
+			return elem
+		}
+
+		const VARS = {
+			en: {
+				full_name: 'Vasileios Pasioliokis',
+				job_title: 'Full stack developer',
+				tech_knowledge: 'Proficient in',
+				buzzwords: [ 'Javascript', 'PHP', 'bash', 'SQL', 'Linux', 'Vue', 'Laravel', 'Lisp', 'Python', 'CSS', 'HTML', 'Git', 'Purescript', 'Ruby' ],
+				language_knowledge: 'Languages',
+				languages: [ 'English', 'Greek', 'Japanese' ],
+				skills_heading: 'Skills',
+				skills: [ 'Software development', 'Performance optimisation', 'Refactoring legacy code', 'System administration', 'Functional programming', 'Dataflow programming', 'Literate programming', 'Translation', 'Internationalisation' ],
+				info_heading: 'Information',
+				info: {
+					'Phone': '+30 695 501 8104',
+					'Email': 'pasivasi@outlook.com',
+					'Github': 'github.com/vaaas',
+				},
+				education: {
+					'Aristotle University of Thessaloniki': 'Studied as an Electrical &amp; Computer Engineer',
+					'Certificate of Proficiency in English': 'Cambridge',
+				},
+				xp: [
+					{
+						where: 'Doppler SA',
+						from: 'June 2020',
+						to: 'Now',
+						what: [
+							'Developed a web platform for internal accounting utilities',
+							'Developed an order automation tool in collaboration with domain experts',
+							'Developed a business intelligence tool',
+							'Virtualised a legacy system for hosting on a web platform',
+							'Build and systems automation',
+							'Mentoring of new employees in modern Linux web development',
+							'Data analysis',
+							'Security hardening',
+						],
+					},
+					{
+						where: 'Organization for Transformative Works',
+						from: 'August 2015',
+						to: '2021',
+						what: [
+							'Translation of documentation, legal text, newsletter contents, and support tickets between Greek and English',
+							'Founded and coordinated the Greek translation team',
+							'Content management through Wordpress',
+							'Wrangling of tag and metadata ontologies on user content',
+							'User interface programming',
+						],
+					},
+				],
+			},
+
+			el: {
+				full_name: 'Βασίλειος Πασιαλιώκης',
+				job_title: 'Προγραμματιστής λογισμικού (full stack)',
+				tech_knowledge: 'Γνώσεις',
+				buzzwords: [ 'Javascript', 'PHP', 'bash', 'SQL', 'Linux', 'Vue', 'Laravel', 'Lisp', 'Python', 'CSS', 'HTML', 'Git', 'Purescript', 'Ruby' ],
+				language_knowledge: 'Γλώσσες',
+				languages: [ 'Αγγλικά', 'Ελληνικά', 'Ιαπωνικά' ],
+				skills_heading: 'Δεξιότητες',
+				skills: [ 'Ανάπτηξη λογισμικού', 'Βελτιστοποίηση', 'Αναδιάρθρωση παλαιού κώδικα', 'Διαχείρηση συστημάτων', 'Συναρτησιακός προγραμματισμός', 'Προγραμματισμός dataflow', 'Εγγράματος προγραμματισμός', 'Μετάφραση', 'Διεθνοποίηση' ],
+				info_heading: 'Information',
+				info: {
+					'Phone': '+30 695 501 8104',
+					'Email': 'pasivasi@outlook.com',
+					'Github': 'github.com/vaaas',
+				},
+				education: {
+					'Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης': 'Τελειόφοιτος Τμήματος Ηλεκτρολόγων Μηχανικών &amp; Μηχανικών Υπολογιστών',
+					'Certificate of Proficiency in English': 'Cambridge',
+				},
+				xp: [
+					{
+						where: 'Doppler SA',
+						from: 'Ιούνιος 2020',
+						to: 'Τώρα',
+						what: [
+							'Ανάπτηξη εσωτεριών λογιστικών εργαλείων σε πλατφόρμα ιστού',
+							'Ανάπτηξη εργαλείου αυτόματης παραγγελιοληψίας σε συνεργασία με ειδικούς στον τομέα τους',
+							'Ανάπτηξη εργαλείου business intelligence',
+							'Μεταφορά παλαιού συστήματος σε εικονικές μηχανές προς εξωτερική φιλοξενία',
+							'Αυτοματοποίηση εγκαταστάσεων και συστημάτων',
+							'Ανάλυση δεδομένων',
+							'Διαχείρηση συστημάτων και ψηφιακής ασφάλειας',
+						],
+					},
+					{
+						where: 'Organization for Transformative Works',
+						from: 'Αύγουστος 2015',
+						to: '2021',
+						what: [
+							'Μετάφραση οδηγιών χρήστη, νομικού κειμένου, αναρτήσεων, και αιτημάτων χρηστών μεταξύ αγγλικών και ελληνικών',
+							'Founded and coordinated the Greek translation team',
+							'Ίδρυση και συντονισμός της ελληνικής μεταφραστικής ομάδας',
+							'Διαχείρηση υλικού μέσω πλατφόρμας Wordpress',
+							'Οργάνωση οντολογίας μεταδεδομένων υλικού χρηστών',
+							'Προγραμματισμός διεπαφής χρήστη',
+						],
+					},
+				],
+			},
+		}
+
+		let lang = 'en'
+
+		function render_body() {
+			return E('body', null, [
+				E('header', null, [
+					E('nav', null, Object.keys(VARS).map(x => E('span', { onclick: () => { lang = x ; replace_body() } }, [ x.toUpperCase() ]))),
+					E('h1', null, VARS[lang].full_name),
+					E('h2', null, VARS[lang].job_title),
+				]),
+
+				E('main', null, [
+					E('section', { className: 'sidebar' }, [
+						E('section', { className: 'info' }, [
+							E('header', null, [ 'Information' ]),
+							...Object.entries(VARS[lang].info)
+							.map(x => [
+								E('header', null, [ x[0] ]),
+								E('div', null, [ x[1] ]),
+							])
+							.flat()
+						]),
+
+						E('section', { className: 'skills' }, [
+							E('header', null, [ VARS[lang].skills_heading ]),
+							...VARS[lang].skills.map(x => E('div', null, [ x ]))
+						]),
+
+						E('section', { className: 'buzzwords' }, [
+							E('header', null, [ VARS[lang].tech_knowledge ]),
+							E('div', null, VARS[lang].buzzwords.map(x => E('span', null, [ x, ' ' ])))
+						]),
+
+						E('section', { className: 'languages' }, [
+							E('header', null, [ VARS[lang].language_knowledge ]),
+							E('div', null, VARS[lang].languages.map(x => E('span', null, [ x, ' ']))),
+						]),
+					]),
+
+					E('section', { className: 'xp' }, [
+						E('section', { className: 'experience' }, [
+							E('header', null, [ 'Experience', ]),
+							...VARS[lang].xp.map(x => E('section', null, [
+								E('header', null, [ x.where ]),
+								E('div', null, [ E('em', null, [ x.from, ' — ', x.to ]) ]),
+								E('ul', null, x.what.map(x => E('li', null, [ x ])))
+							])),
+						]),
+						E('section', { className: 'education' }, [
+							E('header', null, [ 'Education' ]),
+							...Object.entries(VARS[lang].education)
+							.map(x => E('section', null, [
+								E('header', null, [ x[0] ]),
+								E('div', null, [ x[1] ]),
+							]))
+							.flat()
+						]),
+					]),
+				]),
+
+				E('footer', null, ['This document is available online: '])
+			])
+		}
+
+		function replace_body() {
+			document.title = VARS[lang].full_name
+			document.firstElementChild.replaceChild(render_body(), document.body)
+		}
+
+		window.onload = replace_body
+	</script>
+</head>
+
+<body/>
+</html>

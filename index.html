@@ -135,6 +135,8 @@
 				skills_heading: 'Skills',
 				skills: [ 'Software development', 'Performance optimisation', 'Refactoring legacy code', 'System administration', 'Functional programming', 'Dataflow programming', 'Literate programming', 'Translation', 'Internationalisation' ],
 				info_heading: 'Information',
+				xp_heading: 'Experience',
+				education_heading: 'Education',
 				info: {
 					'Τηλέφωνο': '+30 695 501 8104',
 					'Email': 'pasivasi@outlook.com',
@@ -143,7 +145,7 @@
 				footer: 'This document is available online: ',
 				link: 'https://vaaas.github.io/cv/',
 				education: {
-					'Aristotle University of Thessaloniki': 'Studied as an Electrical &amp; Computer Engineer',
+					'Aristotle University of Thessaloniki': 'Studied as an Electrical & Computer Engineer',
 					'Certificate of Proficiency in English': 'Cambridge',
 				},
 				xp: [
@@ -190,7 +192,9 @@
 				languages: [ 'Αγγλικά', 'Ελληνικά', 'Ιαπωνικά' ],
 				skills_heading: 'Δεξιότητες',
 				skills: [ 'Ανάπτηξη λογισμικού', 'Βελτιστοποίηση', 'Αναδιάρθρωση παλαιού κώδικα', 'Διαχείρηση συστημάτων', 'Συναρτησιακός προγραμματισμός', 'Προγραμματισμός dataflow', 'Εγγράματος προγραμματισμός', 'Μετάφραση', 'Διεθνοποίηση' ],
-				info_heading: 'Information',
+				info_heading: 'Πληροφορίες',
+				xp_heading: 'Εμπειρία',
+				education_heading: 'Σπουδές',
 				info: {
 					'Phone': '+30 695 501 8104',
 					'Email': 'pasivasi@outlook.com',
@@ -199,7 +203,7 @@
 				footer: 'Αυτό το έγγραφο διατίθεται και online: ',
 				link: 'https://vaaas.github.io/cv/',
 				education: {
-					'Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης': 'Τελειόφοιτος Τμήματος Ηλεκτρολόγων Μηχανικών &amp; Μηχανικών Υπολογιστών',
+					'Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης': 'Τελειόφοιτος Τμήματος Ηλεκτρολόγων Μηχανικών &a Μηχανικών Υπολογιστών',
 					'Certificate of Proficiency in English': 'Cambridge',
 				},
 				xp: [
@@ -287,7 +291,7 @@
 
 					E('section', { className: 'xp' }, [
 						E('section', { className: 'experience' }, [
-							E('header', null, [ 'Experience', ]),
+							E('header', null, [ TL.xp_heading, ]),
 							...TL.xp.map(x => E('section', null, [
 								E('header', null, [ x.where ]),
 								E('div', null, [ E('em', null, [ x.from, ' — ', x.to ]) ]),
@@ -295,7 +299,7 @@
 							])),
 						]),
 						E('section', { className: 'education' }, [
-							E('header', null, [ 'Education' ]),
+							E('header', null, [ TL.education_heading ]),
 							...Object.entries(TL.education)
 							.map(x => E('section', null, [
 								E('header', null, [ x[0] ]),

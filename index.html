@@ -17,10 +17,7 @@
 			font-family: serif;
 		}
 
-		body {
-			margin: 15mm;
-			height: 100%;
-		}
+		body { margin: 15mm; }
 
 		section, footer { color: var(--semi); }
 
@@ -109,6 +106,11 @@
 		/* media queries */
 		@media print {
 			header nav { display: none; }
+			footer {
+				position: absolute;
+				bottom: 0mm;
+				font-style: italic;
+			}
 		}
 	</style>
 	<script>
@@ -128,12 +130,13 @@
 			en: {
 				full_name: 'Vasileios Pasialiokis',
 				job_title: 'Full stack developer',
+				blurb: "I'm a software developer and system administrator specialising in high scalability web services and software sensitive to performance. I'm fluent in node.js, Python, and PHP in functional style. My tools of the trade are Emacs and a UNIX shell.",
 				tech_knowledge: 'Proficient in',
 				buzzwords: [ 'Javascript', 'PHP', 'bash', 'SQL', 'Linux', 'Vue', 'Laravel', 'Lisp', 'Python', 'CSS', 'HTML', 'Git', 'Purescript', 'Ruby' ],
 				language_knowledge: 'Languages',
 				languages: [ 'English', 'Greek', 'Japanese' ],
 				skills_heading: 'Skills',
-				skills: [ 'Software development', 'Performance optimisation', 'Refactoring legacy code', 'System administration', 'Functional programming', 'Dataflow programming', 'Literate programming', 'Translation', 'Internationalisation' ],
+				skills: [ 'Software development', 'System administration', 'Translation' ],
 				info_heading: 'Information',
 				xp_heading: 'Experience',
 				education_heading: 'Education',
@@ -182,6 +185,7 @@
 			el: {
 				full_name: 'Βασίλειος Πασιαλιώκης',
 				job_title: 'Προγραμματιστής λογισμικού (full stack)',
+				blurb: "Είμαι προγραμματιστής λογισμικού και διαχειριστής συστημάτων με εξειδίκευση σε υπηρεσίες ιστού με μεγάλες ανάγκες κλίμακας και επιδόσεων. Γνωρίζω άριστα τα node.js, Python, και PHP με συναρτησιακό στυλ. Τα εργαλεία μου είναι το Emacs και το περιβάλλον UNIX.",
 				birth_year_heading: 'Έτος γέννησης',
 				birth_year: '1992',
 				military_heading: 'Στρατιωτικές Υποχρεώσεις',
@@ -191,7 +195,7 @@
 				language_knowledge: 'Γλώσσες',
 				languages: [ 'Αγγλικά', 'Ελληνικά', 'Ιαπωνικά' ],
 				skills_heading: 'Δεξιότητες',
-				skills: [ 'Ανάπτηξη λογισμικού', 'Βελτιστοποίηση', 'Αναδιάρθρωση παλαιού κώδικα', 'Διαχείρηση συστημάτων', 'Συναρτησιακός προγραμματισμός', 'Προγραμματισμός dataflow', 'Εγγράματος προγραμματισμός', 'Μετάφραση', 'Διεθνοποίηση' ],
+				skills: [ 'Ανάπτηξη λογισμικού', 'Διαχείρηση συστημάτων', 'Μετάφραση' ],
 				info_heading: 'Πληροφορίες',
 				xp_heading: 'Εμπειρία',
 				education_heading: 'Σπουδές',
@@ -240,7 +244,7 @@
 		let lang = 'en'
 
 		function render_body() {
-            const TL = VARS[lang]
+			const TL = VARS[lang]
 
 			return E('body', null, [
 				E('header', null, [
@@ -253,6 +257,8 @@
 					E('section', { className: 'sidebar' }, [
 						E('section', { className: 'info' }, [
 							E('header', null, [ 'Information' ]),
+
+							E('p', null, [TL.blurb]),
 
 							...(lang === 'el' ?
 								[
@@ -297,6 +303,7 @@
 								E('ul', null, x.what.map(x => E('li', null, [ x ])))
 							])),
 						]),
+
 						E('section', { className: 'education' }, [
 							E('header', null, [ TL.education_heading ]),
 							...Object.entries(TL.education)

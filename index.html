@@ -1,4 +1,4 @@
-<?xml version='1.0'?>
+<!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
 <head>
 	<meta charset='utf-8'/>
@@ -116,13 +116,16 @@
 	<script>
 		'use strict'
 
-		function E (name, attrs=null, children=null) {
+		function E(x) {
+			if (!Array.isArray(x))
+				return document.createTextNode(''+x)
+			const [name, attrs, children] = x
 			const elem = document.createElement(name)
 			if (attrs)
 				for (const [k, v] of Object.entries(attrs)) elem[k] = v
 			if (children)
 				for (const x of children)
-					elem.appendChild(x instanceof Node ? x : document.createTextNode(''+x))
+					elem.appendChild(E(x))
 			return elem
 		}
 
@@ -156,14 +159,15 @@
 						where: 'Doppler SA',
 						from: 'June 2020',
 						to: 'Now',
+						stack: 'PHP & Laravel, JS & Vue',
 						what: [
+							'Architected a continuous integration system',
 							'Developed a web platform for internal accounting utilities',
 							'Developed an order automation tool in collaboration with domain experts',
 							'Developed a business intelligence tool',
 							'Virtualised a legacy system for hosting on a web platform',
-							'Build and systems automation',
 							'Mentoring of new employees in modern Linux web development',
-							'Data analysis',
+							'Data analysis & requirements gathering',
 							'Security hardening',
 						],
 					},
@@ -171,6 +175,7 @@
 						where: 'Organization for Transformative Works',
 						from: 'August 2015',
 						to: '2021',
+						stack: 'Wordpress, Ruby on Rails, JS & jQuery',
 						what: [
 							'Translation of documentation, legal text, newsletter contents, and support tickets between Greek and English',
 							'Founded and coordinated the Greek translation team',
@@ -189,7 +194,7 @@
 				birth_year_heading: 'Έτος γέννησης',
 				birth_year: '1992',
 				military_heading: 'Στρατιωτικές Υποχρεώσεις',
-				military: 'Σε αναβολή',
+				military: 'Εκπληρωμένες',
 				tech_knowledge: 'Γνώσεις',
 				buzzwords: [ 'Javascript', 'PHP', 'bash', 'SQL', 'Linux', 'Vue', 'Laravel', 'Lisp', 'Python', 'CSS', 'HTML', 'Git', 'Purescript', 'Ruby' ],
 				language_knowledge: 'Γλώσσες',
@@ -215,13 +220,14 @@
 						where: 'Doppler SA',
 						from: 'Ιούνιος 2020',
 						to: 'Τώρα',
+						stack: 'PHP & Laravel, JS & Vue, Ubuntu Linux',
 						what: [
+							'Αρχιτεκτόνηση συστήματος continuous integration',
 							'Ανάπτηξη εσωτερικών λογιστικών εργαλείων σε πλατφόρμα ιστού',
 							'Ανάπτηξη εργαλείου αυτόματης παραγγελιοληψίας σε συνεργασία με ειδικούς στον τομέα τους',
 							'Ανάπτηξη εργαλείου business intelligence',
 							'Μεταφορά παλαιού συστήματος σε εικονικές μηχανές προς εξωτερική φιλοξενία',
-							'Αυτοματοποίηση εγκαταστάσεων και συστημάτων',
-							'Ανάλυση δεδομένων',
+							'Ανάλυση δεδομένων & συλλογή αναγκών πελατών',
 							'Διαχείρηση συστημάτων και ψηφιακής ασφάλειας',
 						],
 					},
@@ -229,6 +235,7 @@
 						where: 'Organization for Transformative Works',
 						from: 'Αύγουστος 2015',
 						to: '2021',
+						stack: 'Wordpress, Ruby on Rails, JS & jQuery',
 						what: [
 							'Μετάφραση οδηγιών χρήστη, νομικού κειμένου, αναρτήσεων, και αιτημάτων χρηστών μεταξύ αγγλικών και ελληνικών',
 							'Ίδρυση και συντονισμός της ελληνικής μεταφραστικής ομάδας',
@@ -243,81 +250,92 @@
 
 		let lang = 'en'
 
+		function sidebar(TL) {
+			return ['section', { className: 'sidebar' }, [
+				['section', { className: 'info' }, [
+					['header', null, [ 'Information' ]],
+
+					['p', null, [TL.blurb]],
+
+					...(lang === 'el' ?
+						[
+							['header', null, [ TL.birth_year_heading ]],
+							['div', null, [ TL.birth_year ]],
+
+							['header', null, [ TL.military_heading ]],
+							['div', null, [ TL.military ]],
+						] :
+						['']),
+
+					...Object.entries(TL.info)
+					.map(x => [
+						['header', null, [ x[0] ]],
+						['div', null, [ x[1] ]],
+					])
+					.flat()
+				]],
+
+				['section', { className: 'skills' }, [
+					['header', null, [ TL.skills_heading ]],
+					...TL.skills.map(x => ['div', null, [ x ]])
+				]],
+
+				['section', { className: 'buzzwords' }, [
+					['header', null, [ TL.tech_knowledge ]],
+					['div', null, TL.buzzwords.map(x => ['span', null, [ x, ' ' ]])]
+				]],
+
+				['section', { className: 'languages' }, [
+					['header', null, [ TL.language_knowledge ]],
+					['div', null, TL.languages.map(x => ['span', null, [ x, ' ']])],
+				]],
+			]]
+		}
+
+		function XP(TL) {
+			return ['section', { className: 'xp' }, [
+				['section', { className: 'experience' }, [
+					['header', null, [ TL.xp_heading, ]],
+					...TL.xp.map(x => ['section', null, [
+						['header', null, [ x.where ]],
+						['div', null, [
+							['em', null, [ x.from, ' — ', x.to ]]
+						]],
+						['div', null, [ 'Stack: ', x.stack, ]],
+						['ul', null, x.what.map(x => ['li', null, [ x ]])]
+					]]),
+				]],
+
+				['section', { className: 'education' }, [
+					['header', null, [ TL.education_heading ]],
+					...Object.entries(TL.education)
+						.map(x => ['section', null, [
+							['header', null, [ x[0] ]],
+							['div', null, [ x[1] ]],
+						]])
+				]],
+			]]
+		}
+
 		function render_body() {
 			const TL = VARS[lang]
 
-			return E('body', null, [
-				E('header', null, [
-					E('nav', null, Object.keys(VARS).map(x => E('span', { onclick: () => { lang = x ; replace_body() } }, [ x.toUpperCase() ]))),
-					E('h1', null, TL.full_name),
-					E('h2', null, TL.job_title),
-				]),
+			return E(
+				['body', null, [
+					['header', null, [
+						['nav', null, Object.keys(VARS).map(x =>
+							['span', { onclick: () => { lang = x ; replace_body() } }, [ x.toUpperCase() ]])
+						],
+						['h1', null, [TL.full_name]],
+						['h2', null, [TL.job_title]],
+					]],
 
-				E('main', null, [
-					E('section', { className: 'sidebar' }, [
-						E('section', { className: 'info' }, [
-							E('header', null, [ 'Information' ]),
-
-							E('p', null, [TL.blurb]),
-
-							...(lang === 'el' ?
-								[
-									E('header', null, [ TL.birth_year_heading ]),
-									E('div', null, [ TL.birth_year ]),
-
-									E('header', null, [ TL.military_heading ]),
-									E('div', null, [ TL.military ]),
-								] :
-								['']),
-
-							...Object.entries(TL.info)
-							.map(x => [
-								E('header', null, [ x[0] ]),
-								E('div', null, [ x[1] ]),
-							])
-							.flat()
-						]),
-
-						E('section', { className: 'skills' }, [
-							E('header', null, [ TL.skills_heading ]),
-							...TL.skills.map(x => E('div', null, [ x ]))
-						]),
-
-						E('section', { className: 'buzzwords' }, [
-							E('header', null, [ TL.tech_knowledge ]),
-							E('div', null, TL.buzzwords.map(x => E('span', null, [ x, ' ' ])))
-						]),
-
-						E('section', { className: 'languages' }, [
-							E('header', null, [ TL.language_knowledge ]),
-							E('div', null, TL.languages.map(x => E('span', null, [ x, ' ']))),
-						]),
-					]),
-
-					E('section', { className: 'xp' }, [
-						E('section', { className: 'experience' }, [
-							E('header', null, [ TL.xp_heading, ]),
-							...TL.xp.map(x => E('section', null, [
-								E('header', null, [ x.where ]),
-								E('div', null, [ E('em', null, [ x.from, ' — ', x.to ]) ]),
-								E('ul', null, x.what.map(x => E('li', null, [ x ])))
-							])),
-						]),
-
-						E('section', { className: 'education' }, [
-							E('header', null, [ TL.education_heading ]),
-							...Object.entries(TL.education)
-							.map(x => E('section', null, [
-								E('header', null, [ x[0] ]),
-								E('div', null, [ x[1] ]),
-							]))
-							.flat()
-						]),
-					]),
-				]),
-
-				E('footer', null, [ TL.footer, TL.link])
-			])
+					['main', null, [
+						sidebar(TL),
+						XP(TL),
+					]],
+				['footer', null, [ TL.footer, TL.link]],
+			]])
 		}
 
 		function replace_body() {

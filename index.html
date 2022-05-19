@@ -97,6 +97,8 @@
 			margin-bottom: 1rem;
 		}
 
+		.education { padding-bottom: 1rem; }
+
 		/* footer */
 		footer {
 			border-top: 1px solid var(--gray);
@@ -111,6 +113,7 @@
 				bottom: 0mm;
 				font-style: italic;
 			}
+			header, footer, .sidebar { border: none; }
 		}
 	</style>
 	<script>
@@ -136,8 +139,6 @@
 				blurb: "I'm a software developer and system administrator specialising in high scalability web services and software sensitive to performance. I'm fluent in node.js, Python, and PHP in functional style. My tools of the trade are Emacs and a UNIX shell.",
 				tech_knowledge: 'Proficient in',
 				buzzwords: [ 'Javascript', 'PHP', 'bash', 'SQL', 'Linux', 'Vue', 'Laravel', 'Lisp', 'Python', 'CSS', 'HTML', 'Git', 'Purescript', 'Ruby' ],
-				language_knowledge: 'Languages',
-				languages: [ 'English', 'Greek', 'Japanese' ],
 				skills_heading: 'Skills',
 				skills: [ 'Software development', 'System administration', 'Translation' ],
 				info_heading: 'Information',
@@ -168,7 +169,6 @@
 							'Virtualised a legacy system for hosting on a web platform',
 							'Mentoring of new employees in modern Linux web development',
 							'Data analysis & requirements gathering',
-							'Security hardening',
 						],
 					},
 					{
@@ -197,8 +197,6 @@
 				military: 'Εκπληρωμένες',
 				tech_knowledge: 'Γνώσεις',
 				buzzwords: [ 'Javascript', 'PHP', 'bash', 'SQL', 'Linux', 'Vue', 'Laravel', 'Lisp', 'Python', 'CSS', 'HTML', 'Git', 'Purescript', 'Ruby' ],
-				language_knowledge: 'Γλώσσες',
-				languages: [ 'Αγγλικά', 'Ελληνικά', 'Ιαπωνικά' ],
 				skills_heading: 'Δεξιότητες',
 				skills: [ 'Ανάπτηξη λογισμικού', 'Διαχείρηση συστημάτων', 'Μετάφραση' ],
 				info_heading: 'Πληροφορίες',
@@ -220,7 +218,7 @@
 						where: 'Doppler SA',
 						from: 'Ιούνιος 2020',
 						to: 'Τώρα',
-						stack: 'PHP & Laravel, JS & Vue, Ubuntu Linux',
+						stack: 'PHP & Laravel, JS & Vue',
 						what: [
 							'Αρχιτεκτόνηση συστήματος continuous integration',
 							'Ανάπτηξη εσωτερικών λογιστικών εργαλείων σε πλατφόρμα ιστού',
@@ -228,7 +226,6 @@
 							'Ανάπτηξη εργαλείου business intelligence',
 							'Μεταφορά παλαιού συστήματος σε εικονικές μηχανές προς εξωτερική φιλοξενία',
 							'Ανάλυση δεδομένων & συλλογή αναγκών πελατών',
-							'Διαχείρηση συστημάτων και ψηφιακής ασφάλειας',
 						],
 					},
 					{
@@ -253,7 +250,7 @@
 		function sidebar(TL) {
 			return ['section', { className: 'sidebar' }, [
 				['section', { className: 'info' }, [
-					['header', null, [ 'Information' ]],
+					['header', null, [ TL.info_heading ]],
 
 					['p', null, [TL.blurb]],
 
@@ -283,11 +280,6 @@
 				['section', { className: 'buzzwords' }, [
 					['header', null, [ TL.tech_knowledge ]],
 					['div', null, TL.buzzwords.map(x => ['span', null, [ x, ' ' ]])]
-				]],
-
-				['section', { className: 'languages' }, [
-					['header', null, [ TL.language_knowledge ]],
-					['div', null, TL.languages.map(x => ['span', null, [ x, ' ']])],
 				]],
 			]]
 		}

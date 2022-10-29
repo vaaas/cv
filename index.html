@@ -5,8 +5,7 @@
 	<style>
 		/* basic */
 		:root {
-			--gray: #888;
-			--semi: #666;
+			--semi: #655;
 		}
 
 		html {
@@ -23,11 +22,12 @@
 		header {
 			font-weight: bold;
 			color: #000;
+			grid-area: header;
 		}
 
 		ul {
 			margin: 0;
-			padding-left: 1rem;
+			padding-left: 0;
 		}
 
 		a {
@@ -51,35 +51,46 @@
 			color: var(--semi);
 		}
 
-		/* header */
+		b { color: #000; }
+
+		/* primary section */
+		body > section {
+			position: relative;
+			display: grid;
+			grid-template-areas:
+				'header header'
+				'left right'
+				'footer footer';
+		}
+
+		body > section > section > section + section { margin-top: 1rem; }
+
+		body > section > section { padding: 1rem 0; }
+
+		/* primary header */
 		body > section > header {
+			grid-area: header;
 			padding-bottom: 1rem;
-			border-bottom: 1px solid var(--gray);
+			border-bottom: 1px solid var(--semi);
 		}
 
 		/* nav */
 		nav {
-			float: right;
-			cursor: pointer;
-			color: var(--gray);
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+			color: var(--semi);
 			line-height: 1.5em;
 		}
 
-		nav > *+* { margin-left: 1em; }
-
-		/* main */
-		main { display: flex; }
-		main > section { padding: 1rem 0; }
-		main section:first-child { flex: 1; }
-		main section:last-child { flex: 1.8; }
-		main > section > * + * { margin-top: 2rem; }
+		nav > a + a { margin-left: 1em; }
 
 		/* sidebar */
 		.sidebar {
+			max-width: 60mm;
+			grid-area: left;
 			padding-right: 0.5rem;
-			padding-bottom: 1rem;
-			margin-right: 1rem;
-			border-right: 1px solid var(--gray);
+			border-right: 1px solid var(--semi);
 		}
 
 		.buzzwords div span {
@@ -87,140 +98,147 @@
 			width: 7em;
 		}
 
-		.sidebar > section > header:first-child {
+		body > section > section > header:first-child {
 			font-size: 1.25rem;
 			line-height: 1.5em;
 		}
 
+		/* xp */
+		.xp {
+			grid-area: right;
+			padding-left: 2rem;
+		}
+
 		.xp > section > header:first-child {
-			font-size: 1.25rem;
-			margin-bottom: 1rem;
+			margin-top: 1rem;
+			font-size: 1.1rem;
 		}
 
 		/* footer */
 		footer {
-			border-top: 1px solid var(--gray);
+			grid-area: footer;
+			border-top: 1px solid var(--semi);
 			padding-top: 1rem;
 		}
 
 		/* langs */
 		#el { display: none; }
-		#el:target { display: block; }
+		#el:target { display: grid; }
 		#el:target ~ #en { display: none; }
+
+		.contact { margin-top: 1rem; }
+		.contact > div > * { display: inline-block; }
+		.contact > div > b { width: 3.5rem; }
 
 		/* media queries */
 		@media print {
+			body { margin: 0; }
+			body > section { height: 310mm; }
 			nav { display: none; }
-			footer {
-				position: absolute;
-				bottom: 0mm;
-				font-style: italic;
-			}
+			footer { font-style: italic; }
 			header, footer, .sidebar { border: none; }
 		}
 	</style>
 </head>
 
 <body>
-	<nav>
-		<a href='#en'>EN</a>
-		<a href='#el'>EL</a>
-	</nav>
-
 	<section id='el'>
-		<header class='header'>
+		<nav>
+			<a href='#en'>EN</a>
+			<a href='#el'>EL</a>
+		</nav>
+
+		<header>
 			<h1>Βασίλειος Πασιαλιώκης</h1>
 			<h2>Προγραμματιστής λογισμικού (full stack)</h2>
 		</header>
 
-		<main>
-			<section class="sidebar">
-				<section class="info">
-					<header>Πληροφορίες</header><p>Είμαι προγραμματιστής λογισμικού και διαχειριστής συστημάτων με εξειδίκευση σε υπηρεσίες ιστού με μεγάλες ανάγκες κλίμακας και επιδόσεων. Γνωρίζω άριστα τα node.js, Python, και PHP με συναρτησιακό στυλ. Τα εργαλεία μου είναι το Emacs και το περιβάλλον UNIX.</p>
-					<header>Έτος γέννησης</header>
-					<div>1992</div>
-					<header>Στρατιωτικές Υποχρεώσεις</header>
-					<div>Εκπληρωμένες</div>
-					<header>Phone</header>
-					<div>+30 695 501 8104</div>
-					<header>Email</header>
-					<div>pasivasi@outlook.com</div>
-					<header>Github</header>
-					<div>github.com/vaaas</div>
+		<section class='sidebar'>
+			<section class='info'>
+				<header>Πληροφορίες</header>
+
+				<p>Είμαι προγραμματιστής λογισμικού και διαχειριστής συστημάτων με εξειδίκευση σε υπηρεσίες ιστού με μεγάλες ανάγκες κλίμακας και επιδόσεων. Γνωρίζω άριστα τα node.js, Python, και PHP με συναρτησιακό στυλ. Τα εργαλεία μου είναι το Emacs και το περιβάλλον UNIX.</p>
+
+				<header>Έτος γέννησης</header>
+				<div>1992</div>
+
+				<header>Στρατιωτικές Υποχρεώσεις</header>
+				<div>Εκπληρωμένες</div>
+
+				<header>Phone</header>
+				<div><a href='tel:+306955018104'>+30 695 501 8104</a></div>
+
+				<header>Email</header>
+				<div><a href='mailto:pasivasi@outlook.com'>pasivasi@outlook.com</a></div>
+
+				<header>Github</header>
+				<div><a href='https://github.com/vaaas'>github.com/vaaas</a></div>
+			</section>
+
+			<section class='buzzwords'>
+				<header>Γνώσεις</header>
+				<div>
+					<span>Javascript</span>
+					<span>PHP</span>
+					<span>bash</span>
+					<span>SQL</span>
+					<span>Linux</span>
+					<span>Vue</span>
+					<span>Laravel</span>
+					<span>Lisp</span>
+					<span>Python</span>
+					<span>CSS</span>
+					<span>HTML</span>
+					<span>Git</span>
+					<span>Purescript</span>
+					<span>Ruby</span>
+				</div>
+			</section>
+		</section>
+
+		<section class='xp'>
+			<section class='experience'>
+				<header>Εμπειρία</header>
+				<section>
+					<header>Doppler SA</header>
+					<div><i>Ιούνιος 2020 — Τώρα</i></div>
+					<div>Stack: PHP &amp; Laravel, JS &amp; Vue</div>
+					<ul>
+						<li>Αρχιτεκτόνηση συστήματος continuous integration</li>
+						<li>Ανάπτηξη εσωτερικών λογιστικών εργαλείων σε πλατφόρμα ιστού</li>
+						<li>Ανάπτηξη εργαλείου αυτόματης παραγγελιοληψίας σε συνεργασία με ειδικούς στον τομέα τους</li>
+						<li>Ανάπτηξη εργαλείου business intelligence</li>
+						<li>Μεταφορά παλαιού συστήματος σε εικονικές μηχανές προς εξωτερική φιλοξενία</li>
+						<li>Ανάλυση δεδομένων &amp; συλλογή αναγκών πελατών</li>
+					</ul>
 				</section>
 
-				<section class="skills">
-					<header>Δεξιότητες</header>
-					<div>Ανάπτηξη λογισμικού</div>
-					<div>Διαχείρηση συστημάτων</div>
-					<div>Μετάφραση</div>
-				</section>
-
-				<section class="buzzwords">
-					<header>Γνώσεις</header>
-					<div>
-						<span>Javascript</span>
-						<span>PHP</span>
-						<span>bash</span>
-						<span>SQL</span>
-						<span>Linux</span>
-						<span>Vue</span>
-						<span>Laravel</span>
-						<span>Lisp</span>
-						<span>Python</span>
-						<span>CSS</span>
-						<span>HTML</span>
-						<span>Git</span>
-						<span>Purescript</span>
-						<span>Ruby</span>
-					</div>
+				<section>
+					<header>Organization for Transformative Works</header>
+					<div><i>Αύγουστος 2015 — 2021</i></div>
+					<div>Stack: Wordpress, Ruby on Rails, JS &amp; jQuery</div>
+					<ul>
+						<li>Μετάφραση οδηγιών χρήστη, νομικού κειμένου, αναρτήσεων, και αιτημάτων χρηστών μεταξύ αγγλικών και ελληνικών</li>
+						<li>Ίδρυση και συντονισμός της ελληνικής μεταφραστικής ομάδας</li>
+						<li>Διαχείρηση υλικού μέσω πλατφόρμας Wordpress</li>
+						<li>Οργάνωση οντολογίας μεταδεδομένων υλικού χρηστών</li>
+						<li>Προγραμματισμός διεπαφής χρήστη</li>
+					</ul>
 				</section>
 			</section>
 
-			<section class="xp">
-				<section class="experience">
-					<header>Εμπειρία</header>
-					<section>
-						<header>Doppler SA</header>
-						<div><em>Ιούνιος 2020 — Τώρα</em></div>
-						<div>Stack: PHP &amp; Laravel, JS &amp; Vue</div>
-						<ul>
-							<li>Αρχιτεκτόνηση συστήματος continuous integration</li>
-							<li>Ανάπτηξη εσωτερικών λογιστικών εργαλείων σε πλατφόρμα ιστού</li>
-							<li>Ανάπτηξη εργαλείου αυτόματης παραγγελιοληψίας σε συνεργασία με ειδικούς στον τομέα τους</li>
-							<li>Ανάπτηξη εργαλείου business intelligence</li>
-							<li>Μεταφορά παλαιού συστήματος σε εικονικές μηχανές προς εξωτερική φιλοξενία</li>
-							<li>Ανάλυση δεδομένων &amp; συλλογή αναγκών πελατών</li>
-						</ul>
-					</section>
-
-					<section>
-						<header>Organization for Transformative Works</header>
-						<div><em>Αύγουστος 2015 — 2021</em></div>
-						<div>Stack: Wordpress, Ruby on Rails, JS &amp; jQuery</div>
-						<ul>
-							<li>Μετάφραση οδηγιών χρήστη, νομικού κειμένου, αναρτήσεων, και αιτημάτων χρηστών μεταξύ αγγλικών και ελληνικών</li>
-							<li>Ίδρυση και συντονισμός της ελληνικής μεταφραστικής ομάδας</li>
-							<li>Διαχείρηση υλικού μέσω πλατφόρμας Wordpress</li>
-							<li>Οργάνωση οντολογίας μεταδεδομένων υλικού χρηστών</li>
-							<li>Προγραμματισμός διεπαφής χρήστη</li>
-						</ul>
-					</section>
+			<section class='education'>
+				<header>Σπουδές</header>
+				<section>
+					<header>Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης</header>
+					<div>Τελειόφοιτος Τμήματος Ηλεκτρολόγων Μηχανικών &amp;a Μηχανικών Υπολογιστών</div>
 				</section>
-
-				<section class="education">
-					<header>Σπουδές</header>
-					<section>
-						<header>Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης</header>
-						<div>Τελειόφοιτος Τμήματος Ηλεκτρολόγων Μηχανικών &amp;a Μηχανικών Υπολογιστών</div>
-					</section>
-					<section>
-						<header>Certificate of Proficiency in English</header>
-						<div>Cambridge</div>
-					</section>
+				<section>
+					<header>Certificate of Proficiency in English</header>
+					<div>Cambridge</div>
 				</section>
 			</section>
-		</main>
+		</section>
 
 		<footer>
 			Αυτό το έγγραφο διατίθεται και online:
@@ -229,88 +247,117 @@
 	</section>
 
 	<section id='en'>
-		<header class='header'>
+		<nav>
+			<a href='#en'>EN</a>
+			<a href='#el'>EL</a>
+		</nav>
+
+		<header>
 			<h1>Vasileios Pasialiokis</h1>
 			<h2>Full stack developer</h2>
 		</header>
 
-		<main>
-			<section class="sidebar">
-				<section class="info">
-					<header>Information</header>
-					<p>I'm a software developer and system administrator specialising in high scalability web services and software sensitive to performance. I'm fluent in node.js, Python, and PHP in functional style. My tools of the trade are Emacs and a UNIX shell.</p>
+		<section class='sidebar'>
+			<header>Information</header>
 
-					<header>Phone</header>
-					<div>+30 695 501 8104</div>
+			<section class='info'>
+				<div>I'm a developer and IT operator with a focus on software sensitive to correctness and performance. I'm fluent in node.js, Python, and PHP in functional style.</div>
 
-					<header>Email</header>
-					<div>pasivasi@outlook.com</div>
-
-					<header>Github</header>
-					<div>github.com/vaaas</div>
-				</section>
-
-				<section class="buzzwords">
-					<header>Proficient in</header>
-
-					<div>
-						<span>Javascript</span>
-						<span>PHP</span>
-						<span>bash</span>
-						<span>SQL</span>
-						<span>Linux</span>
-						<span>Vue</span>
-						<span>Laravel</span>
-						<span>Lisp</span>
-						<span>Python</span>
-						<span>CSS</span>
-						<span>HTML</span>
-						<span>Git</span>
-						<span>Purescript</span>
-						<span>Ruby</span>
-					</div>
-				</section>
+				<div class='contact'>
+					<div><b>Phone</b> <a href='tel:+306955018104'>+30 695 501 8104</a></div>
+					<div><b>Email</b> <a href='mailto:pasivasi@outlook.com'>pasivasi@outlook.com</a></div>
+					<div><b>Github</b> <a href='https://github.com/vaaas'>github.com/vaaas</a></div>
+				</div>
 			</section>
 
-			<section class="xp">
-				<section class="experience">
-					<header>Experience</header>
-					<section>
-						<header>Doppler SA</header>
-						<div><em>June 2020 — Now</em></div>
-						<div>Stack: PHP &amp; Laravel, JS &amp; Vue</div>
-						<ul>
-							<li>Architected a continuous integration system</li>
-							<li>Developed a web platform for internal accounting utilities</li>
-							<li>Developed an order automation tool in collaboration with domain experts</li>
-							<li>Developed a business intelligence tool</li>
-							<li>Virtualised a legacy system for hosting on a web platform</li>
-							<li>Mentoring of new employees in modern Linux web development</li>
-							<li>Data analysis &amp; requirements gathering</li>
-						</ul>
-					</section>
+			<section class='education'>
+				<header>Education</header>
+				<div>
+					Aristotle University of Thessaloniki
+					<br/>
+					<i>Computer Engineering</i>
+				</div>
 
-					<section>
-						<header>Organization for Transformative Works</header>
-						<div><em>August 2015 — 2021</em></div>
-						<div>Stack: Wordpress, Ruby on Rails, JS &amp; jQuery</div>
-						<ul>
-							<li>Translation of documentation, legal text, newsletter contents, and support tickets between Greek and English</li>
-							<li>Founded and coordinated the Greek translation team</li>
-							<li>Content management through Wordpress</li>
-							<li>Wrangling of tag and metadata ontologies on user content</li>
-							<li>User interface programming</li>
-						</ul>
-					</section>
-				</section>
-
-				<section class="education">
-					<header>Education</header>
-					<section><header>Aristotle University of Thessaloniki</header><div>Studied as an Electrical &amp; Computer Engineer</div></section>
-					<section><header>Certificate of Proficiency in English</header><div>Cambridge</div></section>
-				</section>
 			</section>
-		</main>
+
+			<section class='buzzwords'>
+				<header>Skills</header>
+
+				<div>
+					<span>Javascript</span>
+					<span>Typescript</span>
+					<span>node.js</span>
+					<span>Express</span>
+					<span>Vue</span>
+					<span>React</span>
+					<span>SolidJS</span>
+					<span>(S)CSS</span>
+					<span>PHP</span>
+					<span>Laravel</span>
+					<span>SQL</span>
+					<span>Lisp</span>
+					<span>Python</span>
+					<span>Purescript</span>
+					<span>Linux</span>
+					<span>bash</span>
+					<span>Git</span>
+					<span>Docker</span>
+					<span>AWS</span>
+				</div>
+			</section>
+		</section>
+
+		<section class='xp'>
+			<header>Experience</header>
+
+			<section>
+				<header>Phenometry — phi3d.com</header>
+				<div><i>2022 — now</i></div>
+				<div>Stack: node.js &amp; Express, Typescript &amp; Vue, WASM, AWS</div>
+				<ul>
+					<li>Significant refactoring of existing code into modern best practices: jQuery UI to Vue 3, JS to TS, Grunt to Webpack, consistent linting, globally mutable state into pure functions</li>
+					<li>Added 80+% test coverage</li>
+					<li>Reduced initial load size by 95%</li>
+					<li>Visual refresh of Phi</li>
+				</ul>
+			</section>
+
+			<section>
+				<header>Mattermost</header>
+				<div><i>2022</i></div>
+				<div>Stack: JS, TS, Electron, React</div>
+				<ul>
+					<li>Paid contributor for a number of Linux-specific bugs in the Electron application</li>
+				</ul>
+			</section>
+
+			<section>
+				<header>Doppler SA</header>
+				<div><i>2020 — 2022</i></div>
+				<div>Stack: PHP &amp; Laravel, JS &amp; Vue</div>
+				<ul>
+					<li>Architected a continuous integration pipeline</li>
+					<li>Developed a web platform for internal accounting utilities</li>
+					<li>Developed an order automation tool</li>
+					<li>Developed a BI dashboard</li>
+					<li>Virtualised a legacy system for hosting on a web platform</li>
+					<li>Mentored new employees in modern Linux web development</li>
+				</ul>
+			</section>
+
+			<section>
+				<header>Organization for Transformative Works</header>
+				<div><i>2015 — 2021</i></div>
+				<div>Stack: Wordpress, Ruby on Rails, JS &amp; jQuery</div>
+				<ul>
+					<li>Translation of documentation, legal text, newsletter contents, and support tickets between Greek and English</li>
+					<li>Founded and coordinated the Greek translation team</li>
+					<li>Content management through Wordpress</li>
+					<li>Wrangling of tag and metadata ontologies on user content</li>
+					<li>User interface programming</li>
+				</ul>
+			</section>
+		</section>
 
 		<footer>
 			This document is available online:

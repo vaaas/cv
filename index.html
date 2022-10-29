@@ -15,13 +15,12 @@
 			width: 210mm;
 			line-height: 1.5em;
 			font-family: serif;
+			color: var(--semi);
 		}
 
 		body { margin: 15mm; }
 
-		section, footer { color: var(--semi); }
-
-		section header {
+		header {
 			font-weight: bold;
 			color: #000;
 		}
@@ -31,17 +30,20 @@
 			padding-left: 1rem;
 		}
 
-		/* header */
-		.header {
-			padding-bottom: 1rem;
-			border-bottom: 1px solid var(--gray);
+		a {
+			color: inherit;
+			text-decoration: none;
 		}
-		.header h1 {
+
+		a:hover { text-decoration: underline; }
+
+		h1 {
 			font-size: 2rem;
 			margin: 0;
 			line-height: 1.5em;
 		}
-		.header h2 {
+
+		h2 {
 			font-size: 1.50rem;
 			font-weight: normal;
 			margin: 0;
@@ -49,25 +51,28 @@
 			color: var(--semi);
 		}
 
+		/* header */
+		body > section > header {
+			padding-bottom: 1rem;
+			border-bottom: 1px solid var(--gray);
+		}
+
 		/* nav */
-		body > nav {
+		nav {
 			float: right;
 			cursor: pointer;
 			color: var(--gray);
 			line-height: 1.5em;
 		}
-		body > nav a {
-			color: inherit;
-			text-decoration: none;
-		}
-		body > nav *:hover { text-decoration: underline; }
-		body > nav *+* { margin-left: 1em; }
+
+		nav > *+* { margin-left: 1em; }
 
 		/* main */
 		main { display: flex; }
-		main > section { padding-top: 1rem; }
+		main > section { padding: 1rem 0; }
 		main section:first-child { flex: 1; }
 		main section:last-child { flex: 1.8; }
+		main > section > * + * { margin-top: 2rem; }
 
 		/* sidebar */
 		.sidebar {
@@ -77,10 +82,7 @@
 			border-right: 1px solid var(--gray);
 		}
 
-		.sidebar > section + section { margin-top: 2rem; }
-		.info > header:first-child { margin-bottom: 0.5rem; }
-
-		:is(.buzzwords, .languages) div span {
+		.buzzwords div span {
 			display: inline-block;
 			width: 7em;
 		}
@@ -90,16 +92,10 @@
 			line-height: 1.5em;
 		}
 
-		/* xp */
-		.xp section + section { margin-top: 0.5rem; }
-		.xp > section + section { margin-top: 2rem; }
-
 		.xp > section > header:first-child {
 			font-size: 1.25rem;
 			margin-bottom: 1rem;
 		}
-
-		.education { padding-bottom: 1rem; }
 
 		/* footer */
 		footer {
@@ -107,14 +103,14 @@
 			padding-top: 1rem;
 		}
 
+		/* langs */
 		#el { display: none; }
 		#el:target { display: block; }
-
 		#el:target ~ #en { display: none; }
 
 		/* media queries */
 		@media print {
-			body > nav { display: none; }
+			nav { display: none; }
 			footer {
 				position: absolute;
 				bottom: 0mm;

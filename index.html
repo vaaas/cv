@@ -4,17 +4,13 @@
 	<meta charset='utf-8'/>
 	<style>
 		/* basic */
-		:root {
-			--semi: #655;
-		}
-
 		html {
 			font-size: 4mm;
 			margin: auto;
 			width: 210mm;
 			line-height: 1.5em;
 			font-family: serif;
-			color: var(--semi);
+			color: #655;
 		}
 
 		body { margin: 15mm; }
@@ -48,7 +44,7 @@
 			font-weight: normal;
 			margin: 0;
 			line-height: 1.5em;
-			color: var(--semi);
+			color: #655;
 		}
 
 		b { color: #000; }
@@ -71,7 +67,6 @@
 		body > section > header {
 			grid-area: header;
 			padding-bottom: 1rem;
-			border-bottom: 1px solid var(--semi);
 		}
 
 		/* nav */
@@ -79,7 +74,6 @@
 			position: absolute;
 			top: 1rem;
 			right: 1rem;
-			color: var(--semi);
 			line-height: 1.5em;
 		}
 
@@ -90,7 +84,6 @@
 			max-width: 60mm;
 			grid-area: left;
 			padding-right: 0.5rem;
-			border-right: 1px solid var(--semi);
 		}
 
 		.buzzwords div span {
@@ -117,7 +110,6 @@
 		/* footer */
 		footer {
 			grid-area: footer;
-			border-top: 1px solid var(--semi);
 			padding-top: 1rem;
 		}
 
@@ -133,10 +125,12 @@
 		/* media queries */
 		@media print {
 			body { margin: 0; }
-			body > section { height: 310mm; }
+			.xp { min-height: 265mm; }
 			nav { display: none; }
-			footer { font-style: italic; }
-			header, footer, .sidebar { border: none; }
+			footer {
+				font-style: italic;
+				text-align: center;
+			}
 		}
 	</style>
 </head>
@@ -324,8 +318,7 @@
 
 			<section>
 				<header>Mattermost</header>
-				<div><i>2022</i></div>
-				<div>Stack: JS, TS, Electron, React</div>
+				<div><i>2022</i> &emsp; Stack: JS, TS, Electron, React</div>
 				<ul>
 					<li>Paid contributor for a number of Linux-specific bugs in the Electron application</li>
 				</ul>

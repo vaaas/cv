@@ -32,18 +32,16 @@
 		}
 
 		/* header */
-		body > header {
+		.header {
 			padding-bottom: 1rem;
 			border-bottom: 1px solid var(--gray);
 		}
-
-		body > header h1 {
+		.header h1 {
 			font-size: 2rem;
 			margin: 0;
 			line-height: 1.5em;
 		}
-
-		body > header h2 {
+		.header h2 {
 			font-size: 1.50rem;
 			font-weight: normal;
 			margin: 0;
@@ -51,15 +49,19 @@
 			color: var(--semi);
 		}
 
-		body > header nav {
+		/* nav */
+		body > nav {
 			float: right;
 			cursor: pointer;
 			color: var(--gray);
 			line-height: 1.5em;
 		}
-
-		body > header nav *:hover { text-decoration: underline; }
-		body > header nav *+* { margin-left: 1em; }
+		body > nav a {
+			color: inherit;
+			text-decoration: none;
+		}
+		body > nav *:hover { text-decoration: underline; }
+		body > nav *+* { margin-left: 1em; }
 
 		/* main */
 		main { display: flex; }
@@ -105,9 +107,14 @@
 			padding-top: 1rem;
 		}
 
+		#el { display: none; }
+		#el:target { display: block; }
+
+		#el:target ~ #en { display: none; }
+
 		/* media queries */
 		@media print {
-			header nav { display: none; }
+			body > nav { display: none; }
 			footer {
 				position: absolute;
 				bottom: 0mm;
@@ -116,228 +123,203 @@
 			header, footer, .sidebar { border: none; }
 		}
 	</style>
-	<script>
-		'use strict'
-
-		function E(x) {
-			if (!Array.isArray(x))
-				return document.createTextNode(''+x)
-			const [name, attrs, children] = x
-			const elem = document.createElement(name)
-			if (attrs)
-				for (const [k, v] of Object.entries(attrs)) elem[k] = v
-			if (children)
-				for (const x of children)
-					elem.appendChild(E(x))
-			return elem
-		}
-
-		const VARS = {
-			en: {
-				full_name: 'Vasileios Pasialiokis',
-				job_title: 'Full stack developer',
-				blurb: "I'm a software developer and system administrator specialising in high scalability web services and software sensitive to performance. I'm fluent in node.js, Python, and PHP in functional style. My tools of the trade are Emacs and a UNIX shell.",
-				tech_knowledge: 'Proficient in',
-				buzzwords: [ 'Javascript', 'PHP', 'bash', 'SQL', 'Linux', 'Vue', 'Laravel', 'Lisp', 'Python', 'CSS', 'HTML', 'Git', 'Purescript', 'Ruby' ],
-				skills_heading: 'Skills',
-				skills: [ 'Software development', 'System administration', 'Translation' ],
-				info_heading: 'Information',
-				xp_heading: 'Experience',
-				education_heading: 'Education',
-				info: {
-					'Phone': '+30 695 501 8104',
-					'Email': 'pasivasi@outlook.com',
-					'Github': 'github.com/vaaas',
-				},
-				footer: 'This document is available online: ',
-				link: 'https://vaaas.github.io/cv/',
-				education: {
-					'Aristotle University of Thessaloniki': 'Studied as an Electrical & Computer Engineer',
-					'Certificate of Proficiency in English': 'Cambridge',
-				},
-				xp: [
-					{
-						where: 'Doppler SA',
-						from: 'June 2020',
-						to: 'Now',
-						stack: 'PHP & Laravel, JS & Vue',
-						what: [
-							'Architected a continuous integration system',
-							'Developed a web platform for internal accounting utilities',
-							'Developed an order automation tool in collaboration with domain experts',
-							'Developed a business intelligence tool',
-							'Virtualised a legacy system for hosting on a web platform',
-							'Mentoring of new employees in modern Linux web development',
-							'Data analysis & requirements gathering',
-						],
-					},
-					{
-						where: 'Organization for Transformative Works',
-						from: 'August 2015',
-						to: '2021',
-						stack: 'Wordpress, Ruby on Rails, JS & jQuery',
-						what: [
-							'Translation of documentation, legal text, newsletter contents, and support tickets between Greek and English',
-							'Founded and coordinated the Greek translation team',
-							'Content management through Wordpress',
-							'Wrangling of tag and metadata ontologies on user content',
-							'User interface programming',
-						],
-					},
-				],
-			},
-
-			el: {
-				full_name: 'Βασίλειος Πασιαλιώκης',
-				job_title: 'Προγραμματιστής λογισμικού (full stack)',
-				blurb: "Είμαι προγραμματιστής λογισμικού και διαχειριστής συστημάτων με εξειδίκευση σε υπηρεσίες ιστού με μεγάλες ανάγκες κλίμακας και επιδόσεων. Γνωρίζω άριστα τα node.js, Python, και PHP με συναρτησιακό στυλ. Τα εργαλεία μου είναι το Emacs και το περιβάλλον UNIX.",
-				birth_year_heading: 'Έτος γέννησης',
-				birth_year: '1992',
-				military_heading: 'Στρατιωτικές Υποχρεώσεις',
-				military: 'Εκπληρωμένες',
-				tech_knowledge: 'Γνώσεις',
-				buzzwords: [ 'Javascript', 'PHP', 'bash', 'SQL', 'Linux', 'Vue', 'Laravel', 'Lisp', 'Python', 'CSS', 'HTML', 'Git', 'Purescript', 'Ruby' ],
-				skills_heading: 'Δεξιότητες',
-				skills: [ 'Ανάπτηξη λογισμικού', 'Διαχείρηση συστημάτων', 'Μετάφραση' ],
-				info_heading: 'Πληροφορίες',
-				xp_heading: 'Εμπειρία',
-				education_heading: 'Σπουδές',
-				info: {
-					'Phone': '+30 695 501 8104',
-					'Email': 'pasivasi@outlook.com',
-					'Github': 'github.com/vaaas',
-				},
-				footer: 'Αυτό το έγγραφο διατίθεται και online: ',
-				link: 'https://vaaas.github.io/cv/',
-				education: {
-					'Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης': 'Τελειόφοιτος Τμήματος Ηλεκτρολόγων Μηχανικών &a Μηχανικών Υπολογιστών',
-					'Certificate of Proficiency in English': 'Cambridge',
-				},
-				xp: [
-					{
-						where: 'Doppler SA',
-						from: 'Ιούνιος 2020',
-						to: 'Τώρα',
-						stack: 'PHP & Laravel, JS & Vue',
-						what: [
-							'Αρχιτεκτόνηση συστήματος continuous integration',
-							'Ανάπτηξη εσωτερικών λογιστικών εργαλείων σε πλατφόρμα ιστού',
-							'Ανάπτηξη εργαλείου αυτόματης παραγγελιοληψίας σε συνεργασία με ειδικούς στον τομέα τους',
-							'Ανάπτηξη εργαλείου business intelligence',
-							'Μεταφορά παλαιού συστήματος σε εικονικές μηχανές προς εξωτερική φιλοξενία',
-							'Ανάλυση δεδομένων & συλλογή αναγκών πελατών',
-						],
-					},
-					{
-						where: 'Organization for Transformative Works',
-						from: 'Αύγουστος 2015',
-						to: '2021',
-						stack: 'Wordpress, Ruby on Rails, JS & jQuery',
-						what: [
-							'Μετάφραση οδηγιών χρήστη, νομικού κειμένου, αναρτήσεων, και αιτημάτων χρηστών μεταξύ αγγλικών και ελληνικών',
-							'Ίδρυση και συντονισμός της ελληνικής μεταφραστικής ομάδας',
-							'Διαχείρηση υλικού μέσω πλατφόρμας Wordpress',
-							'Οργάνωση οντολογίας μεταδεδομένων υλικού χρηστών',
-							'Προγραμματισμός διεπαφής χρήστη',
-						],
-					},
-				],
-			},
-		}
-
-		let lang = 'en'
-
-		function sidebar(TL) {
-			return ['section', { className: 'sidebar' }, [
-				['section', { className: 'info' }, [
-					['header', null, [ TL.info_heading ]],
-
-					['p', null, [TL.blurb]],
-
-					...(lang === 'el' ?
-						[
-							['header', null, [ TL.birth_year_heading ]],
-							['div', null, [ TL.birth_year ]],
-
-							['header', null, [ TL.military_heading ]],
-							['div', null, [ TL.military ]],
-						] :
-						['']),
-
-					...Object.entries(TL.info)
-					.map(x => [
-						['header', null, [ x[0] ]],
-						['div', null, [ x[1] ]],
-					])
-					.flat()
-				]],
-
-				['section', { className: 'skills' }, [
-					['header', null, [ TL.skills_heading ]],
-					...TL.skills.map(x => ['div', null, [ x ]])
-				]],
-
-				['section', { className: 'buzzwords' }, [
-					['header', null, [ TL.tech_knowledge ]],
-					['div', null, TL.buzzwords.map(x => ['span', null, [ x, ' ' ]])]
-				]],
-			]]
-		}
-
-		function XP(TL) {
-			return ['section', { className: 'xp' }, [
-				['section', { className: 'experience' }, [
-					['header', null, [ TL.xp_heading, ]],
-					...TL.xp.map(x => ['section', null, [
-						['header', null, [ x.where ]],
-						['div', null, [
-							['em', null, [ x.from, ' — ', x.to ]]
-						]],
-						['div', null, [ 'Stack: ', x.stack, ]],
-						['ul', null, x.what.map(x => ['li', null, [ x ]])]
-					]]),
-				]],
-
-				['section', { className: 'education' }, [
-					['header', null, [ TL.education_heading ]],
-					...Object.entries(TL.education)
-						.map(x => ['section', null, [
-							['header', null, [ x[0] ]],
-							['div', null, [ x[1] ]],
-						]])
-				]],
-			]]
-		}
-
-		function render_body() {
-			const TL = VARS[lang]
-
-			return E(
-				['body', null, [
-					['header', null, [
-						['nav', null, Object.keys(VARS).map(x =>
-							['span', { onclick: () => { lang = x ; replace_body() } }, [ x.toUpperCase() ]])
-						],
-						['h1', null, [TL.full_name]],
-						['h2', null, [TL.job_title]],
-					]],
-
-					['main', null, [
-						sidebar(TL),
-						XP(TL),
-					]],
-				['footer', null, [ TL.footer, TL.link]],
-			]])
-		}
-
-		function replace_body() {
-			document.title = VARS[lang].full_name
-			document.firstElementChild.replaceChild(render_body(), document.body)
-		}
-
-		window.onload = replace_body
-	</script>
 </head>
 
-<body/>
+<body>
+	<nav>
+		<a href='#en'>EN</a>
+		<a href='#el'>EL</a>
+	</nav>
+
+	<section id='el'>
+		<header class='header'>
+			<h1>Βασίλειος Πασιαλιώκης</h1>
+			<h2>Προγραμματιστής λογισμικού (full stack)</h2>
+		</header>
+
+		<main>
+			<section class="sidebar">
+				<section class="info">
+					<header>Πληροφορίες</header><p>Είμαι προγραμματιστής λογισμικού και διαχειριστής συστημάτων με εξειδίκευση σε υπηρεσίες ιστού με μεγάλες ανάγκες κλίμακας και επιδόσεων. Γνωρίζω άριστα τα node.js, Python, και PHP με συναρτησιακό στυλ. Τα εργαλεία μου είναι το Emacs και το περιβάλλον UNIX.</p>
+					<header>Έτος γέννησης</header>
+					<div>1992</div>
+					<header>Στρατιωτικές Υποχρεώσεις</header>
+					<div>Εκπληρωμένες</div>
+					<header>Phone</header>
+					<div>+30 695 501 8104</div>
+					<header>Email</header>
+					<div>pasivasi@outlook.com</div>
+					<header>Github</header>
+					<div>github.com/vaaas</div>
+				</section>
+
+				<section class="skills">
+					<header>Δεξιότητες</header>
+					<div>Ανάπτηξη λογισμικού</div>
+					<div>Διαχείρηση συστημάτων</div>
+					<div>Μετάφραση</div>
+				</section>
+
+				<section class="buzzwords">
+					<header>Γνώσεις</header>
+					<div>
+						<span>Javascript</span>
+						<span>PHP</span>
+						<span>bash</span>
+						<span>SQL</span>
+						<span>Linux</span>
+						<span>Vue</span>
+						<span>Laravel</span>
+						<span>Lisp</span>
+						<span>Python</span>
+						<span>CSS</span>
+						<span>HTML</span>
+						<span>Git</span>
+						<span>Purescript</span>
+						<span>Ruby</span>
+					</div>
+				</section>
+			</section>
+
+			<section class="xp">
+				<section class="experience">
+					<header>Εμπειρία</header>
+					<section>
+						<header>Doppler SA</header>
+						<div><em>Ιούνιος 2020 — Τώρα</em></div>
+						<div>Stack: PHP &amp; Laravel, JS &amp; Vue</div>
+						<ul>
+							<li>Αρχιτεκτόνηση συστήματος continuous integration</li>
+							<li>Ανάπτηξη εσωτερικών λογιστικών εργαλείων σε πλατφόρμα ιστού</li>
+							<li>Ανάπτηξη εργαλείου αυτόματης παραγγελιοληψίας σε συνεργασία με ειδικούς στον τομέα τους</li>
+							<li>Ανάπτηξη εργαλείου business intelligence</li>
+							<li>Μεταφορά παλαιού συστήματος σε εικονικές μηχανές προς εξωτερική φιλοξενία</li>
+							<li>Ανάλυση δεδομένων &amp; συλλογή αναγκών πελατών</li>
+						</ul>
+					</section>
+
+					<section>
+						<header>Organization for Transformative Works</header>
+						<div><em>Αύγουστος 2015 — 2021</em></div>
+						<div>Stack: Wordpress, Ruby on Rails, JS &amp; jQuery</div>
+						<ul>
+							<li>Μετάφραση οδηγιών χρήστη, νομικού κειμένου, αναρτήσεων, και αιτημάτων χρηστών μεταξύ αγγλικών και ελληνικών</li>
+							<li>Ίδρυση και συντονισμός της ελληνικής μεταφραστικής ομάδας</li>
+							<li>Διαχείρηση υλικού μέσω πλατφόρμας Wordpress</li>
+							<li>Οργάνωση οντολογίας μεταδεδομένων υλικού χρηστών</li>
+							<li>Προγραμματισμός διεπαφής χρήστη</li>
+						</ul>
+					</section>
+				</section>
+
+				<section class="education">
+					<header>Σπουδές</header>
+					<section>
+						<header>Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης</header>
+						<div>Τελειόφοιτος Τμήματος Ηλεκτρολόγων Μηχανικών &amp;a Μηχανικών Υπολογιστών</div>
+					</section>
+					<section>
+						<header>Certificate of Proficiency in English</header>
+						<div>Cambridge</div>
+					</section>
+				</section>
+			</section>
+		</main>
+
+		<footer>
+			Αυτό το έγγραφο διατίθεται και online:
+			<a href='https://vaaas.github.io/cv/'>https://vaaas.github.io/cv/'</a>
+		</footer>
+	</section>
+
+	<section id='en'>
+		<header class='header'>
+			<h1>Vasileios Pasialiokis</h1>
+			<h2>Full stack developer</h2>
+		</header>
+
+		<main>
+			<section class="sidebar">
+				<section class="info">
+					<header>Information</header>
+					<p>I'm a software developer and system administrator specialising in high scalability web services and software sensitive to performance. I'm fluent in node.js, Python, and PHP in functional style. My tools of the trade are Emacs and a UNIX shell.</p>
+
+					<header>Phone</header>
+					<div>+30 695 501 8104</div>
+
+					<header>Email</header>
+					<div>pasivasi@outlook.com</div>
+
+					<header>Github</header>
+					<div>github.com/vaaas</div>
+				</section>
+
+				<section class="buzzwords">
+					<header>Proficient in</header>
+
+					<div>
+						<span>Javascript</span>
+						<span>PHP</span>
+						<span>bash</span>
+						<span>SQL</span>
+						<span>Linux</span>
+						<span>Vue</span>
+						<span>Laravel</span>
+						<span>Lisp</span>
+						<span>Python</span>
+						<span>CSS</span>
+						<span>HTML</span>
+						<span>Git</span>
+						<span>Purescript</span>
+						<span>Ruby</span>
+					</div>
+				</section>
+			</section>
+
+			<section class="xp">
+				<section class="experience">
+					<header>Experience</header>
+					<section>
+						<header>Doppler SA</header>
+						<div><em>June 2020 — Now</em></div>
+						<div>Stack: PHP &amp; Laravel, JS &amp; Vue</div>
+						<ul>
+							<li>Architected a continuous integration system</li>
+							<li>Developed a web platform for internal accounting utilities</li>
+							<li>Developed an order automation tool in collaboration with domain experts</li>
+							<li>Developed a business intelligence tool</li>
+							<li>Virtualised a legacy system for hosting on a web platform</li>
+							<li>Mentoring of new employees in modern Linux web development</li>
+							<li>Data analysis &amp; requirements gathering</li>
+						</ul>
+					</section>
+
+					<section>
+						<header>Organization for Transformative Works</header>
+						<div><em>August 2015 — 2021</em></div>
+						<div>Stack: Wordpress, Ruby on Rails, JS &amp; jQuery</div>
+						<ul>
+							<li>Translation of documentation, legal text, newsletter contents, and support tickets between Greek and English</li>
+							<li>Founded and coordinated the Greek translation team</li>
+							<li>Content management through Wordpress</li>
+							<li>Wrangling of tag and metadata ontologies on user content</li>
+							<li>User interface programming</li>
+						</ul>
+					</section>
+				</section>
+
+				<section class="education">
+					<header>Education</header>
+					<section><header>Aristotle University of Thessaloniki</header><div>Studied as an Electrical &amp; Computer Engineer</div></section>
+					<section><header>Certificate of Proficiency in English</header><div>Cambridge</div></section>
+				</section>
+			</section>
+		</main>
+
+		<footer>
+			This document is available online:
+			<a href='https://vaaas.github.io/cv/'>https://vaaas.github.io/cv/'</a>
+		</footer>
+	</section>
+</body>
 </html>

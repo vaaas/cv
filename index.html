@@ -49,6 +49,8 @@
 
 		b { color: #000; }
 
+		.hide { display: none !important; }
+
 		/* primary section */
 		body > section {
 			position: relative;
@@ -96,6 +98,10 @@
 			line-height: 1.5em;
 		}
 
+		.contact { margin-top: 1rem; }
+		.contact > div > * { display: inline-block; }
+		.contact > div > b { width: 4.5rem; }
+
 		/* xp */
 		.xp {
 			grid-area: right;
@@ -113,15 +119,6 @@
 			padding-top: 1rem;
 		}
 
-		/* langs */
-		#el { display: none; }
-		#el:target { display: grid; }
-		#el:target ~ #en { display: none; }
-
-		.contact { margin-top: 1rem; }
-		.contact > div > * { display: inline-block; }
-		.contact > div > b { width: 4.5rem; }
-
 		/* media queries */
 		@media print {
 			body { margin: 0; }
@@ -133,13 +130,25 @@
 			}
 		}
 	</style>
+
+	<script>
+		function set_class(el, cls, state) {
+			if (state) el.classList.add(cls)
+			else el.classList.remove(cls)
+		}
+
+		function show(id) {
+			for (const x of document.querySelectorAll('body > section'))
+				set_class(x, 'hide', x.id !== id)
+		}
+	</script>
 </head>
 
 <body>
-	<section id='el'>
+	<section id='el' class='hide'>
 		<nav>
-			<a href='#en'>EN</a>
-			<a href='#el'>EL</a>
+			<a href='#' onclick='show("en")'>EN</a>
+			<a href='#' onclick='show("el")''>EL</a>
 		</nav>
 
 		<header>
@@ -257,8 +266,8 @@
 
 	<section id='en'>
 		<nav>
-			<a href='#en'>EN</a>
-			<a href='#el'>EL</a>
+			<a href='#' onclick='show("en")'>EN</a>
+			<a href='#' onclick='show("el")'>EL</a>
 		</nav>
 
 		<header>

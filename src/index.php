@@ -1,4 +1,14 @@
-<?php require "utils.php"; ?>
+<?php
+require "utils.php";
+$xml = (array) loadXml("experience.xml");
+$data = new stdClass();
+$data->jobs = array_map(fn($x) => (array) $x, $xml["job"]);
+$data->foss = array_map(fn($x) => (array) $x, $xml["foss"]);
+$data->plangs = $xml["plang"];
+$data->langs = $xml["lang"];
+$data->tools = $xml["tool"];
+unset($xml);
+?>
 <!DOCTYPE html>
 <html lang='en'>
   <head>
@@ -11,7 +21,7 @@
     </style>
     <link rel='icon' href='<?= data_url(
         "data:image/png",
-        __DIR__ . "/favicon.png"
+        asset("favicon.png")
     ) ?>'/>
   </head>
 

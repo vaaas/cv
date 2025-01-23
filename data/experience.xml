@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<experience>
+    <job>
+        <company>Kaizen Gaming</company>
+        <title>Frontend Developer</title>
+        <period>2024 — now</period>
+        <description>
+            Live betting team.
+            Frontend development with Vue, Vuex, Tailwind.
+            Composable, functional, fully unit tested code.
+            Mentoring of new employees.
+        </description>
+    </job>
+
+    <job>
+        <company>Aylo</company>
+        <title>Backend Developer</title>
+        <period>2023 — 2024</period>
+        <description>
+            Maintenance and modernisation of legacy code (Zend Framework 1).
+            Migration to a microservices architecture.
+            Improvements on content search functionality.
+            PHP, Laravel, MySQL, Elasticsearch, React.
+        </description>
+    </job>
+
+    <job>
+        <company>Phenometry</company>
+        <title>Full-stack Developer</title>
+        <period>2022 — 2023</period>
+        <description>
+            Full-stack development in node.js, Express, Typescript, Vue, PostgreSQL.
+            Significant refactoring of legacy code.
+            0% → 80% test coverage.
+            Optimisation and bundle size reduction.
+            Mentoring of new employees.
+            Implementation of Phi for tablet and pen interfaces.
+            Integration of Stripe payments.
+        </description>
+    </job>
+
+    <job>
+        <company>Doppler SA</company>
+        <title>Full-stack Developer, DevOps</title>
+        <period>2020 — 2022</period>
+        <description>
+            Full-stack development in PHP, Laravel, Lumen, Vue, SQL Server, MariaDB.
+            Architected the CI/CD pipelines.
+            Development of order automation, BI analytics, and internal tooling extending the company ERP.
+            Mentoring of new employees.
+        </description>
+    </job>
+
+    <foss>
+        <company>Mattermost</company>
+        <period>2022</period>
+        <description>
+            Paid contributor for the Electron application.
+            Development in React, Typescript.
+        </description>
+    </foss>
+
+    <foss>
+        <company>Organisation for Transformative Works</company>
+        <period>2015 — 2021</period>
+        <description>
+            Founded and coordinated the Greek translation team.
+            Content management through Wordpress.
+            Development of internal tooling in jQuery.
+            Wrangling and management of metadata ontologies.
+        </description>
+    </foss>
+
+    <foss>
+        <company>Assorted &amp; Hobbyist Projects</company>
+        <description>
+            Video game development in Python, PyGame, Panda3d.
+            Native Linux application development in GTK3, Qt4.
+            Embedded systems programming in ChibiOS.
+            Compiler research (Scheme Lisp → Javascript).
+        </description>
+    </foss>
+
+    <plang>Typescript</plang>
+    <plang>Javascript</plang>
+    <plang>PHP</plang>
+    <plang>C</plang>
+    <plang>Python</plang>
+    <plang>Elisp</plang>
+    <plang>Scheme</plang>
+    <plang>(S)CSS</plang>
+    <plang>bash</plang>
+    <plang>SQL</plang>
+
+    <tool>Vue</tool>
+    <tool>React</tool>
+    <tool>Tailwind</tool>
+    <tool>Laravel</tool>
+    <tool>Docker</tool>
+    <tool>Linux</tool>
+    <tool>git</tool>
+    <tool>node.js</tool>
+    <tool>AWS</tool>
+    <tool>Nuxt</tool>
+    <tool>Vuex</tool>
+    <tool>Websockets</tool>
+
+    <lang>Greek (native)</lang>
+    <lang>English (fluent)</lang>
+</experience>

@@ -6,16 +6,9 @@
             <div class='block bold leading-reset'>Programming languages</div>
 
             <div class='block children:block columns-2 leading-2hp pt-2p text-slightly-faded text-sm'>
-            <div>Typescript</div>
-            <div>Javascript</div>
-            <div>PHP</div>
-            <div>C</div>
-            <div>Python</div>
-            <div>Elisp</div>
-            <div>Scheme</div>
-            <div>(S)CSS</div>
-            <div>bash</div>
-            <div>SQL</div>
+                <?php foreach ($data->plangs as $plang): ?>
+                    <div><?= $plang ?></div>
+                <?php endforeach; ?>
             </div>
         </article>
 
@@ -25,18 +18,9 @@
             <div class='block bold leading-reset'>Tooling &amp; libraries</div>
 
             <div class='block children:block columns-2 leading-2hp pt-2p text-slightly-faded text-sm'>
-            <div>Vue</div>
-            <div>React</div>
-            <div>Tailwind</div>
-            <div>Laravel</div>
-            <div>Docker</div>
-            <div>Linux</div>
-            <div>git</div>
-            <div>node.js</div>
-            <div>AWS</div>
-            <div>Nuxt</div>
-            <div>Vuex</div>
-            <div>Websockets</div>
+                <?php foreach ($data->tools as $tool): ?>
+                    <div><?= $tool ?></div>
+                <?php endforeach; ?>
             </div>
 
         </article>
@@ -45,8 +29,9 @@
             <div class='block bold leading-reset'>Spoken languages</div>
 
             <div class='block children:block leading-2hp pt-2p text-slightly-faded text-sm'>
-            <div>Greek (native)</div>
-            <div>English (fluent)</div>
+                <?php foreach ($data->langs as $lang): ?>
+                    <div><?= $lang ?></div>
+                <?php endforeach; ?>
             </div>
         </article>
     </div>

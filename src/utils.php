@@ -47,3 +47,13 @@ function walk(string $dir)
         }
     }
 }
+
+function asset(string $path)
+{
+    return getcwd() . "/assets/" . $path;
+}
+
+function loadXml(string $path)
+{
+    return simplexml_load_file(getcwd() . "/data/" . $path);
+}

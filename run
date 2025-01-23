@@ -17,6 +17,10 @@ case "$1" in
       php84 -S 0.0.0.0:8000 src/index.php
     ;;
 
+  shell)
+    podman run -v ./:/app -p 8000:8000 -i -t $tag /bin/sh
+    ;;
+
   upload)
     scp ./public/* root@sexualise.it:/srv/http/rirekisho.tsuku.ro
     ;;

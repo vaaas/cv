@@ -1,0 +1,32 @@
+#!/bin/sh
+
+tag=vas-cv
+
+case "$1" in
+  build)
+    podman build -f Containerfile.dev -t $tag .
+    ;;
+
+  make)
+    mkdir -p public
+    php84 src/index.php > public/index.html
+    ;;
+
+  dev)
+    podman run -v ./:/app -p 8000:8000 -i -t $tag \
+      php84 -S 0.0.0.0:8000 src/index.php
+    ;;
+
+  upload)
+    scp ./public/* root@sexualise.it:/srv/http/rirekisho.tsuku.ro
+    ;;
+
+  *)
+    echo "COMMANDS
+
+build     builds the dev container
+make      builds the cv
+dev       local development server for the cv
+upload    uploads the cv to tsuku.ro"
+        ;;
+esac

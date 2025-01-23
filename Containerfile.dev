@@ -1,0 +1,5 @@
+   FROM alpine:3.21
+    RUN apk add php84
+    RUN mkdir /app
+WORKDIR /app
+ EXPOSE 8000

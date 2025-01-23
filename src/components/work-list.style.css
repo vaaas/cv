@@ -1,0 +1,12 @@
+.work-list h2 {
+    line-height: 1em;
+    text-transform: lowercase;
+    font-size: calc(4 * var(--p));
+}
+
+.work-list,
+.work-list ol {
+    display: flex;
+    flex-direction: column;
+    gap: calc(2 * var(--p));
+}

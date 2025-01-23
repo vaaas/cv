@@ -1,0 +1,24 @@
+.foss {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: baseline;
+    height: calc(33 * var(--p));
+}
+
+.foss .counter {
+    grid-column: span 2;
+}
+
+.foss .work-list {
+    grid-column: span 10;
+}
+
+@media screen and (max-width: 60rem) {
+    .foss {
+        height: auto;
+    }
+
+    .foss .work-list {
+        grid-column: span 12;
+    }
+}

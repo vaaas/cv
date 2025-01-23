@@ -1,0 +1,34 @@
+body > header {
+    display: flex;
+    height: calc(14 * var(--p));
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+body > header h1 {
+    line-height: 1em;
+    font-size: calc(4 * var(--p));
+}
+
+body > header section * {
+    display: block;
+}
+
+body > header a {
+    line-height: calc(2.5 * var(--p));
+}
+
+body > header section div {
+    padding-bottom: calc(2 * var(--p));
+}
+
+@media screen and (max-width: 60rem) {
+    body > header {
+        display: block;
+        height: auto;
+    }
+
+    body > header section {
+        display: block;
+    }
+}

@@ -1,0 +1,24 @@
+.experience {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: baseline;
+    height: calc(50 * var(--p));
+}
+
+.experience .counter {
+    grid-column: span 2;
+}
+
+.experience .work-list {
+    grid-column: span 10;
+}
+
+@media screen and (max-width: 60rem) {
+    .experience {
+        height: auto;
+    }
+
+    .experience .work-list {
+        grid-column: span 12;
+    }
+}

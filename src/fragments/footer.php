@@ -1,4 +1,4 @@
-<footer class='col-span-12 flex justify-between mobile:hidden print:mt-auto print:p-0 pt-8p text-lowercase text-s'>
+<footer class='flex justify-between mobile:hidden print:mt-auto print:p-0 text-lowercase text-s'>
   <div></div>
 
   <a class='cursor-pointer hover:underline print:hidden' href='en.pdf'>This document is available in PDF</a>

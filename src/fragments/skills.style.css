@@ -1,0 +1,9 @@
+.skills {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: baseline;
+}
+
+.skills .counter {
+    grid-column: span 5;
+}

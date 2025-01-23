@@ -1,14 +1,14 @@
-<article class='leading-2hp'>
-  <h3 class='flex flex-wrap gap-2p mobile:gap-p text-lowercase'>
-    <div class='bold'><?= $this->company ?></div>
+<li>
+  <h3>
+    <span class="company"><?= htmlspecialchars($this->company) ?></span>
     <?php if ($this->title): ?>
-      <div><?= $this->title ?></div>
+      <span><?= htmlspecialchars($this->title) ?></span>
     <?php endif; ?>
-    <div class="border-top-1px border-top-black border-top-solid flexible line mobile:hidden relative"></div>
+    <hr>
     <?php if ($this->period): ?>
-      <div class='no-wrap'><?= $this->period ?></div>
+      <time><?= $this->period ?></time>
     <?php endif; ?>
   </h3>
 
-  <div class='text-slightly-faded text-sm justified block'><?= $this->description ?></div>
-</article>
+  <p><?= htmlspecialchars($this->description) ?></p>
+</li>

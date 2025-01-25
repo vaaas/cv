@@ -7,3 +7,56 @@
 .skills .counter {
     grid-column: span 5;
 }
+
+.skills .body {
+    grid-column: span 7;
+    text-transform: lowercase;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: calc(2 * var(--p));
+}
+
+.skills article {
+    display: block;
+    width: calc(24 * var(--p));
+}
+
+.skills article h3 {
+    display: block;
+    font-weight: bold;
+}
+
+.skills ul {
+    display: block;
+    line-height: calc(2.5 * var(--p));
+    padding-top: calc(2 * var(--p));
+    font-size: calc(1.75 * var(--p));
+    color: var(--color-slightly-faded);
+}
+
+.plangs,
+.libs {
+    height: calc(20 * var(--p));
+}
+
+.langs {
+    height: calc(10 * var(--p));
+}
+
+.plangs ul,
+.libs ul {
+    columns: 2;
+}
+
+.skills li {
+    display: block;
+}
+
+@media screen and (max-width: 60rem) {
+    .skills .body {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--p);
+    }
+}

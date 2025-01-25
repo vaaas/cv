@@ -1,0 +1,35 @@
+body > footer {
+    display: flex;
+    justify-content: space-between;
+    text-transform: lowercase;
+    font-size: calc(1.5 * var(--p));
+}
+
+body > footer aside {
+    user-select: none;
+}
+
+.available-online {
+    display: none;
+}
+
+@media print {
+    body > footer {
+        margin-top: auto;
+        padding: 0;
+    }
+
+    .available-pdf {
+        display: none;
+    }
+
+    .available-online {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 60rem) {
+    body > footer {
+        display: none;
+    }
+}

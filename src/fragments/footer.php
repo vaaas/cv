@@ -1,9 +1,13 @@
-<footer class='flex justify-between mobile:hidden print:mt-auto print:p-0 text-lowercase text-s'>
-  <div></div>
+<footer>
+    <span></span>
 
-  <a class='cursor-pointer hover:underline print:hidden' href='en.pdf'>This document is available in PDF</a>
+    <a class='available-pdf' href='en.pdf'>
+        This document is available in PDF
+    </a>
 
-  <a class='cursor-pointer hidden hover:underline print:block' href='https://rirekisho.tsuku.ro'>This document is available online at rirekisho.tsuku.ro</a>
+    <a class='available-online' href='https://rirekisho.tsuku.ro'>
+        This document is available online at rirekisho.tsuku.ro
+    </a>
 
-  <div class='no-select'>Page 1/1</div>
+    <aside>Page 1/1</aside>
 </footer>

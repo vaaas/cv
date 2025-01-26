@@ -1,0 +1,46 @@
+name: "[PRODUCTION] deploy"
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: check out
+        uses: actions/checkout@v4
+
+      - name: install dependencies
+        shell: bash
+        run: |
+          sudo apt update
+          sudo apt install --yes php-cli
+
+      - name: build
+        shell: bash
+        run: |
+          mkdir -p public
+          php src/index.php > public/index.html
+
+      - name: install secrets
+        shell: bash
+        env:
+          ID_RSA: ${{secrets.ID_RSA}}
+          KNOWN_HOSTS: ${{secrets.KNOWN_HOSTS}}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$ID_RSA" > ~/.ssh/id_rsa
+          echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 700 ~/.ssh
+          chmod 600 ~/.ssh/*
+
+      - name: deploy
+        env:
+          DOMAIN: ${{vars.DOMAIN}}
+          USER: ${{vars.USER}}
+        shell: bash
+        run: scp ./public/* $USER@$DOMAIN:/srv/http/rirekisho.tsuku.ro

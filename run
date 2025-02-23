@@ -31,6 +31,7 @@ case "$1" in
 build     builds the dev container
 make      builds the cv
 dev       local development server for the cv
+shell     spawn an interactive shell within the dev container
 upload    uploads the cv to tsuku.ro"
         ;;
 esac

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='UTF-8' ?>
 <experience>
     <job>
         <company>Kaizen Gaming</company>
@@ -9,6 +9,8 @@
             Frontend development with Vue, Vuex, Tailwind.
             Composable, functional, fully unit tested code.
             Mentoring of new employees.
+            Leading architectural decisions.
+            Coordinating with UX designers &amp; product managers to deliver the best sports betting experience in the world.
         </description>
     </job>
 

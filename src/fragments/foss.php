@@ -1,5 +1,5 @@
 <section class='foss'>
-    <?= render("counter", ["counter" => "01"]) ?>
+    <?= render("counter", ["counter" => "02"]) ?>
 
     <?= render("work-list", [
         "title" => "Open-source Contributions.",

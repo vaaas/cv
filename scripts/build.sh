@@ -21,7 +21,7 @@ Maintainer: Vasileios Pasialiokis <vas@tsuku.ro>
 Description: personal CV
 EOF
 
-cp ~/public/* $dirname/srv/http/rirekisho.tsuku.ro
+cp public/* $dirname/srv/http/rirekisho.tsuku.ro
 
 dpkg-deb --build --root-owner-group $dirname
 cp $build/*deb .

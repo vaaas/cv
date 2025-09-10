@@ -22,9 +22,7 @@ jobs:
 
       - name: build
         shell: bash
-        run: |
-          mkdir -p public
-          php src/index.php > public/index.html
+        run: ./scripts/build.sh
 
       - name: install secrets
         shell: bash
@@ -42,5 +40,6 @@ jobs:
         env:
           DOMAIN: ${{vars.DOMAIN}}
           USER: ${{vars.USER}}
+          PORT: ${{vars.PORT}}
         shell: bash
-        run: scp ./public/* $USER@$DOMAIN:/srv/http/rirekisho.tsuku.ro
+        run: ./scripts/deploy.sh

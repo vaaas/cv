@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     align-items: baseline;
+    padding-bottom: calc(2 * var(--p));
 }
 
 .skills .counter {

@@ -17,6 +17,8 @@ jobs:
       - name: install dependencies
         shell: bash
         run: |
+          sudo debconf-set man-db/auto-update false
+          sudo rm /var/lib/man-db/auto-update
           sudo apt update
           sudo apt install --yes php-cli php-xml
 

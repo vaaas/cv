@@ -1,6 +1,5 @@
 body > header {
     display: flex;
-    height: calc(14 * var(--p));
     align-items: baseline;
     justify-content: space-between;
 }
@@ -25,7 +24,6 @@ body > header section div {
 @media screen and (max-width: 60rem) {
     body > header {
         display: block;
-        height: auto;
     }
 
     body > header section {

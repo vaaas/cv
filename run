@@ -9,7 +9,8 @@ case "$1" in
 
   make)
     mkdir -p public
-    php84 src/index.php > public/index.html
+    podman run -v ./:/app -i -t $tag \
+      php84 src/index.php > public/index.html
     ;;
 
   dev)

@@ -1,11 +1,13 @@
 #!/bin/sh
+set -e
 
 tag=vas-cv
 
 case "$1" in
-  build)
-    podman build -f Containerfile.dev -t $tag .
-    ;;
+  build)   podman build -f Containerfile.dev -t $tag . ;;
+  package) . scripts/package.sh ;;
+  deploy)  . scripts/deploy.sh ;;
+  shell)   podman run -v ./:/app -p 8000:8000 -i -t $tag /bin/sh ;;
 
   render)
     mkdir -p public
@@ -16,18 +18,6 @@ case "$1" in
   dev)
     podman run -v ./:/app -p 8000:8000 -i -t $tag \
       php84 -S 0.0.0.0:8000 src/index.php
-    ;;
-
-  shell)
-    podman run -v ./:/app -p 8000:8000 -i -t $tag /bin/sh
-    ;;
-
-  package)
-    . scripts/package.sh
-    ;;
-
-  deploy)
-    . scripts/deploy.sh
     ;;
 
   *)

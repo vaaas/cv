@@ -21,6 +21,10 @@ jobs:
           sudo apt update
           sudo apt install --yes podman
 
+      - name: make container
+        shell: bash
+        run: ./run build
+
       - name: render
         shell: bash
         run: ./run render

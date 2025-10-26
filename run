@@ -7,7 +7,7 @@ case "$1" in
     podman build -f Containerfile.dev -t $tag .
     ;;
 
-  make)
+  render)
     mkdir -p public
     podman run -v ./:/app -i -t $tag \
       php84 src/index.php > public/index.html
@@ -22,8 +22,12 @@ case "$1" in
     podman run -v ./:/app -p 8000:8000 -i -t $tag /bin/sh
     ;;
 
-  upload)
-    scp ./public/* root@sexualise.it:/srv/http/rirekisho.tsuku.ro
+  package)
+    . scripts/package.sh
+    ;;
+
+  deploy)
+    . scripts/deploy.sh
     ;;
 
   *)

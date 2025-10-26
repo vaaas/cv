@@ -14,21 +14,25 @@ jobs:
       - name: check out
         uses: actions/checkout@v4
 
-      - name: install dependencies
+      - name: install build dependencies
         shell: bash
         run: |
           sudo rm /var/lib/man-db/auto-update
           sudo apt update
-          sudo apt install --yes php-cli php-xml
+          sudo apt install --yes podman
 
-      - name: build
+      - name: render
         shell: bash
-        run: ./scripts/build.sh
+        run: ./run render
+
+      - name: package
+        shell: bash
+        run: ./run package
 
       - name: install secrets
         shell: bash
         env:
-          ID_RSA: ${{secrets.ID_RSA}}
+          ID_RSA:      ${{secrets.ID_RSA}}
           KNOWN_HOSTS: ${{secrets.KNOWN_HOSTS}}
         run: |
           mkdir -p ~/.ssh
@@ -40,7 +44,7 @@ jobs:
       - name: deploy
         env:
           DOMAIN: ${{vars.DOMAIN}}
-          USER: ${{vars.USER}}
-          PORT: ${{vars.PORT}}
+          USER:   ${{vars.USER}}
+          PORT:   ${{vars.PORT}}
         shell: bash
-        run: ./scripts/deploy.sh
+        run: ./run deploy

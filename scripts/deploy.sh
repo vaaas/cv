@@ -1,5 +1,16 @@
 #!/bin/sh
-pkg=`ls *deb`
-scp -P $PORT $pkg $USER@$DOMAIN:/root/$pkg
-ssh -p $PORT $USER@$DOMAIN dpkg -i /root/$pkg
-ssh -p $PORT $USER@$DOMAIN rm -v /root/$pkg
+set -e
+
+USER=root
+HOST='[2a01:4f9:6b:fa7d::a]'
+SOURCE=public
+TARGET=/srv/http/rirekisho.tsuku.ro
+
+echo 'deploying'
+rsync --verbose         \
+      --recursive       \
+      --update          \
+      -e "ssh -l $USER" \
+      $SOURCE/*         \
+      $HOST:$TARGET
+echo 'done!'

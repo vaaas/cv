@@ -2,31 +2,17 @@
 set -e
 
 tag=vas-cv
+exec="podman run -v ./:/app -p 8000:8000 -i -t $tag"
 
 case "$1" in
   build)   podman build -f Containerfile.dev -t $tag . ;;
-  package) . scripts/package.sh ;;
   deploy)  . scripts/deploy.sh ;;
-  shell)   podman run -v ./:/app -p 8000:8000 -i -t $tag /bin/sh ;;
-
+  shell)   $exec /bin/sh ;;
+  dev)     $exec php84 -S 0.0.0.0:8000 src/index.php ;;
   render)
+    echo 'rendering'
     mkdir -p public
-    podman run -v ./:/app -i -t $tag \
-      php84 src/index.php > public/index.html
+    $exec php84 src/index.php > public/index.html
+    echo 'done!'
     ;;
-
-  dev)
-    podman run -v ./:/app -p 8000:8000 -i -t $tag \
-      php84 -S 0.0.0.0:8000 src/index.php
-    ;;
-
-  *)
-    echo "COMMANDS
-
-build     builds the dev container
-make      builds the cv
-dev       local development server for the cv
-shell     spawn an interactive shell within the dev container
-upload    uploads the cv to tsuku.ro"
-        ;;
 esac

@@ -4,7 +4,7 @@ set -e
 USER=root
 HOST='[2a01:4f9:6b:fa7d::a]'
 SOURCE=public
-TARGET=/srv/http/rirekisho.tsuku.ro
+TARGET=/srv/rirekisho.tsuku.ro
 
 echo 'deploying'
 rsync --verbose         \

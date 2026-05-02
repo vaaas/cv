@@ -1,3 +1,8 @@
+@page {
+  size: A4;
+  margin: 1cm;
+}
+
 * { all: unset; }
 
 :root {

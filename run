@@ -6,13 +6,21 @@ exec="podman run -v ./:/app -p 8000:8000 -i -t $tag"
 
 case "$1" in
   build)   podman build -f Containerfile.dev -t $tag . ;;
-  deploy)  . scripts/deploy.sh ;;
-  shell)   $exec /bin/sh ;;
-  dev)     $exec php84 -S 0.0.0.0:8000 src/index.php ;;
+  deploy)  . scripts/deploy.sh                         ;;
+  shell)   $exec /bin/sh                               ;;
+  dev)     $exec php84 -S 0.0.0.0:8000 src/index.php   ;;
   render)
-    echo 'rendering'
-    mkdir -p public
-    $exec php84 src/index.php > public/index.html
-    echo 'done!'
+    echo        'rendering'
+    mkdir -p    public
+    $exec php84 src/index.php >   \
+                public/index.html
+    echo       'done!'
+    ;;
+  pdf)
+    brave-browser --headless                   \
+                  --print-to-pdf-no-header     \
+                  --no-pdf-header-footer       \
+                  --print-to-pdf=public/en.pdf \
+                  public/index.html
     ;;
 esac

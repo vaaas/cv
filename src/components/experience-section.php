@@ -1,3 +1,13 @@
+<?php
+$work_list_html = render('work-list', ['title' => 'Experience.', 'items' => $this->jobs]);
+?>
+<template>
+  <section class="experience">
+    <x-counter counter="01"/>
+    <?= $work_list_html ?>
+  </section>
+</template>
+<style><![CDATA[
 .experience {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -17,3 +27,4 @@
         grid-column: span 12;
     }
 }
+]]></style>

@@ -1,3 +1,22 @@
+<?php
+$favicon_url = data_url('data:image/png', asset('favicon.png'));
+$font_url = data_url('data:font/truetype;charset=utf-8', asset('playfair-display/PlayfairDisplay-VariableFont_wght.ttf'));
+?>
+<template>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Vasileios Pasioliokis - Software Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="CV of Vasileios Pasialiokis, senior full-stack engineer, Javascript, Typescript, Vue, PHP, Laravel"/>
+    <link rel="icon" href="<?= htmlspecialchars($favicon_url, ENT_XML1) ?>"/>
+  </head>
+</template>
+<style><![CDATA[
+@font-face {
+  font-family: 'Playfair Display';
+  src: url(<?= $font_url ?>);
+}
+
 @page {
   size: A4;
   margin: 1cm;
@@ -64,11 +83,4 @@ a:hover {
 @media screen {
   html { font-size: 20px; }
 }
-
-<?php foreach (walk(__DIR__) as $file) {
-    if ($file === __FILE__) {
-        continue;
-    } elseif (str_contains($file, "style")) {
-        require $file;
-    }
-} ?>
+]]></style>

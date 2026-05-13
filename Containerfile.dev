@@ -1,5 +1,5 @@
    FROM alpine:3.21
-    RUN apk add php84 php84-xml php84-simplexml
+    RUN apk add php84 php84-xml php84-simplexml php84-dom
     RUN mkdir /app
 WORKDIR /app
  EXPOSE 8000

@@ -2,7 +2,7 @@
 $company     = htmlspecialchars($this->company ?? '');
 $title       = htmlspecialchars($this->title ?? '');
 $period      = htmlspecialchars($this->period ?? '');
-$description = htmlspecialchars($this->description ?? '');
+$bullets     = $this->description->bullet ?? [];
 ?>
 <template>
   <li>
@@ -12,50 +12,59 @@ $description = htmlspecialchars($this->description ?? '');
       <hr/>
       <?php if ($this->period ?? null): ?><time><?= $period ?></time><?php endif; ?>
     </h3>
-    <p><?= $description ?></p>
+    <ul>
+      <?php foreach ($bullets as $bullet): ?>
+        <li><?= htmlspecialchars((string) $bullet) ?></li>
+      <?php endforeach; ?>
+    </ul>
   </li>
 </template>
 <style><![CDATA[
-.work-list li {
+.work-list > ol > li {
     line-height: calc(2.5 * var(--p));
 }
 
-.work-list li p {
+.work-list > ol > li ul {
     color: var(--color-slightly-faded);
     display: block;
     font-size: calc(1.75 * var(--p));
+    padding-left: calc(2 * var(--p));
+}
+
+.work-list > ol > li ul li {
+    display: list-item;
+    list-style: disc outside;
     text-align: justify;
 }
 
-.work-list li time {
+.work-list > ol > li time {
     white-space: nowrap;
 }
 
-.work-list li hr {
+.work-list > ol > li hr {
     border-top: 1px solid black;
     flex: 1;
     position: relative;
     top: 0.7rem;
 }
 
-.work-list li h3 {
-    /* flex flex-wrap gap-2p mobile:gap-p text-lowercase */
+.work-list > ol > li h3 {
     display: flex;
     flex-wrap: wrap;
     gap: calc(2 * var(--p));
     text-transform: lowercase;
 }
 
-.work-list li .company {
+.work-list > ol > li .company {
     font-weight: bold;
 }
 
 @media screen and (max-width: 60rem) {
-    .work-list li hr {
+    .work-list > ol > li hr {
         display: none;
     }
 
-    .work-list li h3 {
+    .work-list > ol > li h3 {
         gap: var(--p);
     }
 }

@@ -1,9 +1,17 @@
-
+<?php
+$lang_codes = [];
+foreach (($this->langs ?? []) as $lang) {
+    $lang_codes[] = (string) $lang;
+}
+$langs_text = implode('/', $lang_codes);
+?>
 <template>
   <header>
     <div class="title">
       <h1>Vasileios Pasialiokis</h1>
-      <div class="role">full-stack developer</div>
+      <div class="role">
+        full-stack developer<?php if ($langs_text): ?><span class="langs"> · <?= htmlspecialchars($langs_text) ?></span><?php endif; ?>
+      </div>
     </div>
     <section>
       <a href="mailto:vas@tsuku.ro">vas@tsuku.ro</a>

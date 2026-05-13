@@ -1,7 +1,7 @@
 <?php
-$plangs = $this->plangs;
-$tools = $this->tools;
-$langs = $this->langs;
+$plangs   = $this->plangs;
+$frontend = $this->frontend;
+$backend  = $this->backend;
 
 $render_list = function (iterable $items): string {
     $out = "";
@@ -19,13 +19,13 @@ $render_list = function (iterable $items): string {
         <h3>Programming languages</h3>
         <ul><?= $render_list($plangs) ?></ul>
       </article>
-      <article class="libs">
-        <h3>Tooling &amp; libraries</h3>
-        <ul><?= $render_list($tools) ?></ul>
+      <article class="frontend">
+        <h3>Frontend &amp; libraries</h3>
+        <ul><?= $render_list($frontend) ?></ul>
       </article>
-      <article class="langs">
-        <h3>Spoken languages</h3>
-        <ul><?= $render_list($langs) ?></ul>
+      <article class="backend">
+        <h3>Backend &amp; infrastructure</h3>
+        <ul><?= $render_list($backend) ?></ul>
       </article>
     </div>
   </section>
@@ -70,17 +70,14 @@ $render_list = function (iterable $items): string {
 }
 
 .plangs,
-.libs {
-    height: calc(20 * var(--p));
-}
-
-.langs {
-    height: calc(10 * var(--p));
+.frontend,
+.backend {
+    height: calc(15 * var(--p));
 }
 
 .plangs ul,
-.libs ul,
-.langs ul {
+.frontend ul,
+.backend ul {
     columns: 2;
 }
 

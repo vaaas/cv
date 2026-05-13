@@ -2,15 +2,15 @@
 <experience>
     <job>
         <company>Postquant Labs</company>
-        <title>Full-stack Developer</title>
-        <period>2026 — Now</period>
+        <title>Senior Full-stack Engineer</title>
+        <period>2026 — Present</period>
         <description>
             <bullet>Leading web3 integrations with EVM smart contracts and post-quantum cryptography.</bullet>
-            <bullet>Applied agentic engineering end-to-end, cutting feature lead time by 70% (weeks to days).</bullet>
-            <bullet>Modeled heterogeneous event streams with RxJS and monadic principles, eliminating race conditions.</bullet>
+            <bullet>Adopted agentic development workflows end-to-end, cutting feature lead time by 70% (weeks to days).</bullet>
+            <bullet>Built typed, composable RxJS pipelines over heterogeneous event streams, eliminating race conditions.</bullet>
             <bullet>Achieved 85% integration test coverage, enabling safe refactors and reducing regressions.</bullet>
             <bullet>Partnered with Product and Marketing on pixel-perfect, animated experiences.</bullet>
-            <bullet>Delivering across 5 company projects with modern, idiomatic, full-stack React.</bullet>
+            <bullet>Shipping across 5 projects with full-stack React and TypeScript.</bullet>
         </description>
     </job>
 
@@ -32,7 +32,7 @@
         <title>Backend Developer</title>
         <period>2023 — 2024</period>
         <description>
-            <bullet>Modernised a 15-year-old Zend Framework 1 monolith, migrating to Laravel-based microservices.</bullet>
+            <bullet>Modernized a 15-year-old Zend Framework 1 monolith, migrating to Laravel-based microservices.</bullet>
             <bullet>Enhanced content search with Elasticsearch, improving query latency and accuracy.</bullet>
             <bullet>Delivered PHP/Laravel/MySQL backend services serving hundreds of thousands of users.</bullet>
         </description>
@@ -53,7 +53,7 @@
 
     <job>
         <company>Doppler SA</company>
-        <title>Full-stack Developer, DevOps</title>
+        <title>Full-stack Developer / DevOps Engineer</title>
         <period>2020 — 2022</period>
         <description>
             <bullet>Full-stack development in PHP, Laravel, Lumen, Vue, SQL Server, and MariaDB.</bullet>
@@ -68,7 +68,7 @@
         <company>Mattermost</company>
         <period>2022</period>
         <description>
-            <bullet>Paid open-source contributor to the Electron desktop application, resolving Linux-specific bugs.</bullet>
+            <bullet>Sponsored open-source contributor to the Electron desktop application, resolving Linux-specific bugs.</bullet>
         </description>
     </foss>
 
@@ -81,30 +81,39 @@
         </description>
     </foss>
 
-    <plang>Typescript</plang>
-    <plang>Javascript</plang>
+    <plang>TypeScript</plang>
+    <plang>JavaScript</plang>
     <plang>PHP</plang>
-    <plang>C</plang>
     <plang>Python</plang>
-    <plang>Elisp</plang>
-    <plang>Scheme</plang>
-    <plang>(S)CSS</plang>
-    <plang>bash</plang>
     <plang>SQL</plang>
+    <plang>C</plang>
+    <plang>bash</plang>
+    <plang>HTML</plang>
+    <plang>CSS</plang>
+    <plang>SCSS</plang>
 
-    <tool>Vue</tool>
-    <tool>React</tool>
-    <tool>Tailwind</tool>
-    <tool>Laravel</tool>
-    <tool>Docker</tool>
-    <tool>web3</tool>
-    <tool>git</tool>
-    <tool>node.js</tool>
-    <tool>AWS</tool>
-    <tool>Nuxt</tool>
-    <tool>Vuex</tool>
-    <tool>Websockets</tool>
+    <frontend>React</frontend>
+    <frontend>Vue.js</frontend>
+    <frontend>Nuxt.js</frontend>
+    <frontend>Vuex</frontend>
+    <frontend>Tailwind CSS</frontend>
+    <frontend>RxJS</frontend>
+    <frontend>Jest</frontend>
+    <frontend>Vitest</frontend>
+    <frontend>bun:test</frontend>
+    <frontend>Zustand</frontend>
 
-    <lang>Greek</lang>
-    <lang>English</lang>
+    <backend>Node.js</backend>
+    <backend>Laravel</backend>
+    <backend>PostgreSQL</backend>
+    <backend>Netlify</backend>
+    <backend>WebSockets</backend>
+    <backend>Docker</backend>
+    <backend>AWS</backend>
+    <backend>Web3</backend>
+    <backend>Git</backend>
+    <backend>PHPUnit</backend>
+
+    <lang>en</lang>
+    <lang>gr</lang>
 </experience>

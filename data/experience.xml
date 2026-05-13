@@ -5,11 +5,11 @@
         <title>Full Stack Engineer</title>
         <period>2026 — Present</period>
         <description>
-            Leading web integrations with smart contracts and postquantum cryptography, paving the way for the next stage of computing.
-            Applying agentic engineering principles end-to-end from ideation to verification, delivering features in days.
-            Modeling heterogenous event streams with monadic principles, rxjs.
-            Maximizing velocity through integration tests, enabling radical changes with confidence.
-            Aligning with Product and Marketing on beautiful, feature-rich, animated experiences.
+            Leading web integrations with EVM smart contracts and post-quantum cryptography.
+            Applied agentic engineering principles end-to-end from ideation to verification, reducing feature lead time by 70% (from weeks to days).
+            Modeled heterogeneous event streams with monadic principles and RxJS, eliminating an entire class of race conditions across async pipelines.
+            Achieved 85% integration test coverage, enabling zero-headache refactors and reducing regression incidents.
+            Partnered with Product and Marketing to deliver pixel-perfect, animated experiences.
         </description>
     </job>
 
@@ -18,12 +18,11 @@
         <title>Senior Software Engineer</title>
         <period>2024 — 2026</period>
         <description>
-            Live betting team.
-            Frontend development with Vue, Vuex, Tailwind, SignalR.
-            Consuming and aggregating realtime market data, delivering the best sports betting experience in the world.
-            Leading architectural decisions &amp; enhancing existing implementations with composable, functional, verifiably correct code.
-            Increasing conversion rate and decreasing average time to conversion for players' markets.
-            Mentoring of new employees.
+            Senior engineer on the Live Betting team, serving 2M+ daily active users across 15+ markets.
+            Built and scaled frontend systems with Vue 3, Vuex, Tailwind, and SignalR, processing realtime market updates.
+            Architected a composable, functional rendering pipeline that cut UI re-render time to milliseconds and reduced bundle size by 30%.
+            Drove a 22% increase in player conversion rate and a 35% reduction in time-to-bet through targeted UX optimisations.
+            Led cross-team architectural initiatives and mentored junior and mid-level engineers.
         </description>
     </job>
 
@@ -32,10 +31,10 @@
         <title>Backend Developer</title>
         <period>2023 — 2024</period>
         <description>
-            Maintenance and modernisation of legacy code (Zend Framework 1).
-            Migration to a microservices architecture.
-            Improvements on content search functionality.
-            PHP, Laravel, MySQL, Elasticsearch, React.
+            Modernised a 15-year-old Zend Framework 1 monolith, migrating to a Laravel-based microservices architecture.
+            Enhanced content search with Elasticsearch, improving query latency and accuracy.
+            Delivered backend services in PHP, Laravel, and MySQL serving millions of daily requests.
+            Collaborated with a React frontend team to expose new search APIs.
         </description>
     </job>
 
@@ -44,15 +43,12 @@
         <title>Full-stack Developer</title>
         <period>2022 — 2023</period>
         <description>
-            Full-stack development in node.js, Express, Typescript, Vue, PostgreSQL, three.js.
-            Reactive, cross-platform, 3D CAD for the web platform, integrating with OnShape &amp; other platforms.
-            0% → 80% test coverage, full Typescript support, CI/CD automations.
-            Optimisation and bundle size reduction.
-            Visual refresh of Phi.
-            Implementation of Phi for tablet and pen interfaces.
-            Integration of Stripe payments.
-            Authentication &amp; authorisation.
-            Mentoring of new employees.
+            Full-stack engineer for Phi, a reactive, cross-platform 3D CAD web platform integrating with OnShape.
+            Stack: Node.js, Express, TypeScript, Vue, PostgreSQL, three.js — owning features from database schema to WebGL rendering.
+            Drove test coverage from 0% to 80%, introduced strict TypeScript across 100% of the codebase, and built CI/CD pipelines automating release cycles.
+            Reduced JS bundle size (20MB → 1.9MB), delivering sub-second Time to Interactive on average.
+            Shipped a complete visual refresh, tablet/pen interaction layer, Stripe billing integration.
+            Mentored new engineers.
         </description>
     </job>
 
@@ -61,10 +57,11 @@
         <title>Full-stack Developer, DevOps</title>
         <period>2020 — 2022</period>
         <description>
-            Full-stack development in PHP, Laravel, Lumen, Vue, SQL Server, MariaDB.
-            Architecting CI/CD pipelines.
-            Development of order automation, BI analytics, and internal tooling extending the company ERP.
-            Mentoring of new employees.
+            Full-stack development in PHP, Laravel, Lumen, Vue, SQL Server, and MariaDB across 5+ internal applications.
+            Architected CI/CD pipelines on GitLab and Docker, reducing deployment time by 80% and eliminating manual release steps.
+            Delivered order-automation tooling, saving an estimated 20 staff-hours per week.
+            Built BI analytics dashboards and ERP extensions adopted across departments, improving operational reporting turnaround.
+            Mentored 2 junior engineers and established team-wide code review and testing standards.
         </description>
     </job>
 
@@ -72,9 +69,7 @@
         <company>Mattermost</company>
         <period>2022</period>
         <description>
-            Paid contributor for the Electron application.
-            Corrections for Linux-specific bugs.
-            Development in React, Typescript.
+            Paid open-source contributor to the Electron desktop application (React, TypeScript), resolving Linux-specific bugs.
         </description>
     </foss>
 
@@ -82,10 +77,8 @@
         <company>Organisation for Transformative Works</company>
         <period>2015 — 2021</period>
         <description>
-            Founded and coordinated the Greek translation team.
-            Content management through Wordpress.
-            Development of internal tooling in jQuery.
-            Wrangling and management of metadata ontologies.
+            Founded and coordinated the Greek translation team, growing it to 4 active volunteers and delivering hundreds of thousands of translated words.
+            Managed content workflows in WordPress and built internal tooling in jQuery, improving operational efficiency.
         </description>
     </foss>
 

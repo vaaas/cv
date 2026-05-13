@@ -2,10 +2,10 @@
 <experience>
     <job>
         <company>Postquant Labs</company>
-        <title>Full Stack Engineer</title>
-        <period>2026 — Present</period>
+        <title>Full-stack Developer</title>
+        <period>2026 — Now</period>
         <description>
-            <bullet>Leading web integrations with EVM smart contracts and post-quantum cryptography.</bullet>
+            <bullet>Leading web3 integrations with EVM smart contracts and post-quantum cryptography.</bullet>
             <bullet>Applied agentic engineering end-to-end, cutting feature lead time by 70% (weeks to days).</bullet>
             <bullet>Modeled heterogeneous event streams with RxJS and monadic principles, eliminating race conditions.</bullet>
             <bullet>Achieved 85% integration test coverage, enabling safe refactors and reducing regressions.</bullet>

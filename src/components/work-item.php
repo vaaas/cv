@@ -1,16 +1,20 @@
 <?php
-$company     = htmlspecialchars($this->company ?? '');
-$title       = htmlspecialchars($this->title ?? '');
-$period      = htmlspecialchars($this->period ?? '');
-$bullets     = $this->description->bullet ?? [];
+$company = htmlspecialchars($this->company ?? "");
+$title = htmlspecialchars($this->title ?? "");
+$period = htmlspecialchars($this->period ?? "");
+$bullets = $this->description->bullet ?? [];
 ?>
 <template>
   <li>
     <h3>
       <span class="company"><?= $company ?></span>
-      <?php if ($this->title ?? null): ?><span><?= $title ?></span><?php endif; ?>
+      <?php if (
+          $this->title ?? null
+      ): ?><span><?= $title ?></span><?php endif; ?>
       <hr/>
-      <?php if ($this->period ?? null): ?><time><?= $period ?></time><?php endif; ?>
+      <?php if (
+          $this->period ?? null
+      ): ?><time><?= $period ?></time><?php endif; ?>
     </h3>
     <ul>
       <?php foreach ($bullets as $bullet): ?>
@@ -55,8 +59,12 @@ $bullets     = $this->description->bullet ?? [];
     text-transform: lowercase;
 }
 
-.work-list > ol > li .company {
+.work-list .company {
     font-weight: bold;
+}
+
+.work-list .company:has(+ span) {
+    min-width: 14ch;
 }
 
 @media screen and (max-width: 60rem) {

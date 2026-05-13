@@ -1,9 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <experience>
     <job>
+        <company>Postquant Labs</company>
+        <title>Full Stack Engineer</title>
+        <period>2026 — Present</period>
+        <description>
+            Leading web integrations with smart contracts and postquantum cryptography, paving the way for the next stage of computing.
+            Applying agentic engineering principles end-to-end from ideation to verification, delivering features in days.
+            Modeling heterogenous event streams with monadic principles, rxjs.
+            Maximizing velocity through integration tests, enabling radical changes with confidence.
+            Aligning with Product and Marketing on beautiful, feature-rich, animated experiences.
+        </description>
+    </job>
+
+    <job>
         <company>Kaizen Gaming</company>
         <title>Senior Software Engineer</title>
-        <period>2024 — now</period>
+        <period>2024 — 2026</period>
         <description>
             Live betting team.
             Frontend development with Vue, Vuex, Tailwind, SignalR.
@@ -76,16 +89,6 @@
         </description>
     </foss>
 
-    <foss>
-        <company>Assorted &amp; Hobbyist Projects</company>
-        <description>
-            Video game development in Python, PyGame, Panda3d.
-            Native Linux application development in GTK3, Qt4.
-            Embedded systems programming in ChibiOS.
-            Compiler research (Scheme Lisp → Javascript).
-        </description>
-    </foss>
-
     <plang>Typescript</plang>
     <plang>Javascript</plang>
     <plang>PHP</plang>
@@ -102,7 +105,7 @@
     <tool>Tailwind</tool>
     <tool>Laravel</tool>
     <tool>Docker</tool>
-    <tool>Linux</tool>
+    <tool>web3</tool>
     <tool>git</tool>
     <tool>node.js</tool>
     <tool>AWS</tool>
@@ -110,6 +113,6 @@
     <tool>Vuex</tool>
     <tool>Websockets</tool>
 
-    <lang>Greek (native)</lang>
-    <lang>English (fluent)</lang>
+    <lang>Greek</lang>
+    <lang>English</lang>
 </experience>

@@ -1,6 +1,9 @@
 <?php
-$favicon_url = data_url('data:image/png', asset('favicon.png'));
-$font_url = data_url('data:font/truetype;charset=utf-8', asset('playfair-display/PlayfairDisplay-VariableFont_wght.ttf'));
+$favicon_url = data_url("data:image/png", asset("favicon.png"));
+$font_url = data_url(
+    "data:font/truetype;charset=utf-8",
+    asset("playfair-display/PlayfairDisplay-VariableFont_wght.ttf"),
+);
 ?>
 <template>
   <head>
@@ -54,10 +57,6 @@ body > * {
 
 body > * + * {
     padding-top: calc(8 * var(--p));
-}
-
-.skills .counter {
-    grid-column: span 5;
 }
 
 a {

@@ -1,12 +1,12 @@
 <?php
 $plangs = $this->plangs;
-$tools  = $this->tools;
-$langs  = $this->langs;
+$tools = $this->tools;
+$langs = $this->langs;
 
-$render_list = function(iterable $items): string {
-    $out = '';
+$render_list = function (iterable $items): string {
+    $out = "";
     foreach ($items as $item) {
-        $out .= '<li>' . htmlspecialchars((string) $item) . '</li>';
+        $out .= "<li>" . htmlspecialchars((string) $item) . "</li>";
     }
     return $out;
 };
@@ -39,11 +39,11 @@ $render_list = function(iterable $items): string {
 }
 
 .skills .counter {
-    grid-column: span 5;
+    grid-column: span 2;
 }
 
 .skills .body {
-    grid-column: span 7;
+    grid-column: span 10;
     text-transform: lowercase;
     display: flex;
     flex-wrap: wrap;
@@ -79,7 +79,8 @@ $render_list = function(iterable $items): string {
 }
 
 .plangs ul,
-.libs ul {
+.libs ul,
+.langs ul {
     columns: 2;
 }
 

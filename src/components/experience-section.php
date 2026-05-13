@@ -1,6 +1,8 @@
 <?php
-$work_list_html = render('work-list', ['title' => 'Experience.', 'items' => $this->jobs]);
-?>
+$work_list_html = render("work-list", [
+    "title" => "Experience.",
+    "items" => $this->jobs,
+]); ?>
 <template>
   <section class="experience">
     <x-counter counter="01"/>
@@ -15,11 +17,11 @@ $work_list_html = render('work-list', ['title' => 'Experience.', 'items' => $thi
 }
 
 .experience .counter {
-    grid-column: span 2;
+    grid-column: span 1;
 }
 
 .experience .work-list {
-    grid-column: span 10;
+    grid-column: span 11;
 }
 
 @media screen and (max-width: 60rem) {

@@ -39,11 +39,11 @@ $render_list = function (iterable $items): string {
 }
 
 .skills .counter {
-    grid-column: span 2;
+    grid-column: span 1;
 }
 
 .skills .body {
-    grid-column: span 10;
+    grid-column: span 11;
     text-transform: lowercase;
     display: flex;
     flex-wrap: wrap;

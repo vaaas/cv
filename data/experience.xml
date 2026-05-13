@@ -33,7 +33,7 @@
         <description>
             Modernised a 15-year-old Zend Framework 1 monolith, migrating to a Laravel-based microservices architecture.
             Enhanced content search with Elasticsearch, improving query latency and accuracy.
-            Delivered backend services in PHP, Laravel, and MySQL serving millions of daily requests.
+            Delivered backend services in PHP, Laravel, and MySQL serving hundreds of thousands of users.
             Collaborated with a React frontend team to expose new search APIs.
         </description>
     </job>

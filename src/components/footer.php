@@ -40,6 +40,13 @@ body > footer aside {
 
 @media screen and (max-width: 60rem) {
     body > footer {
+        display: block;
+        margin: auto;
+        font-size: 1rem;
+    }
+
+    body > footer span,
+    body > footer aside {
         display: none;
     }
 }

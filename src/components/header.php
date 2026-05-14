@@ -65,6 +65,8 @@ body > header .role {
 
     body > header section {
         display: block;
+        margin-top: var(--p);
+        margin-left: var(--p);
     }
 }
 </style>

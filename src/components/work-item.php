@@ -1,22 +1,19 @@
 <?php
 $item = unserialize($this->item);
-$company = htmlspecialchars($item['company'] ?? "");
-$title = htmlspecialchars($item['title'] ?? "");
-$period = htmlspecialchars($item['period'] ?? "");
-$bullets = $item['description']['bullet'] ?? [];
+$company = htmlspecialchars($item["company"] ?? "");
+$title = htmlspecialchars($item["title"] ?? "");
+$period = htmlspecialchars($item["period"] ?? "");
+$raw_bullets = $item["description"]["bullet"] ?? [];
+$bullets = is_array($raw_bullets) ? $raw_bullets : [$raw_bullets];
 ?>
 
 <template>
-  <li>
+  <li class='work-item'>
     <h3>
       <span class="company"><?= $company ?></span>
-      <?php if (
-          $this->title ?? null
-      ): ?><span><?= $title ?></span><?php endif; ?>
+      <?php if ($title): ?><span><?= $title ?></span><?php endif; ?>
       <hr/>
-      <?php if (
-          $this->period ?? null
-      ): ?><time><?= $period ?></time><?php endif; ?>
+      <?php if ($period): ?><time><?= $period ?></time><?php endif; ?>
     </h3>
     <ul>
       <?php foreach ($bullets as $bullet): ?>
@@ -27,56 +24,64 @@ $bullets = $item['description']['bullet'] ?? [];
 </template>
 
 <style>
-.work-list > ol > li {
+.work-item {
     line-height: calc(2.5 * var(--p));
 }
 
-.work-list > ol > li ul {
+.work-item ul {
     color: var(--color-slightly-faded);
     display: block;
     font-size: calc(1.75 * var(--p));
     padding-left: calc(2 * var(--p));
 }
 
-.work-list > ol > li ul li {
+.work-item ul li {
     display: list-item;
     list-style: disc outside;
     text-align: justify;
 }
 
-.work-list > ol > li time {
+.work-item time {
     white-space: nowrap;
 }
 
-.work-list > ol > li hr {
+.work-item hr {
     border-top: 1px solid black;
     flex: 1;
     position: relative;
     top: 0.7rem;
 }
 
-.work-list > ol > li h3 {
+.work-item h3 {
     display: flex;
     flex-wrap: wrap;
     gap: calc(2 * var(--p));
     text-transform: lowercase;
 }
 
-.work-list .company {
+.work-item .company {
     font-weight: bold;
 }
 
-.work-list .company:has(+ span) {
-    min-width: 14ch;
+.work-item .company:has(+ span) {
+    min-width: 10ch;
 }
 
 @media screen and (max-width: 60rem) {
-    .work-list > ol > li hr {
+    .work-item hr {
         display: none;
     }
 
-    .work-list > ol > li h3 {
-        gap: var(--p);
+    .work-item h3 {
+        gap: 0 1rem;
     }
+
+    .work-item ul li {
+        text-align: left;
+    }
+
+    .work-item .company { min-width: unset !important; }
+
+    .work-item time { width: 100%; }
 }
 </style>

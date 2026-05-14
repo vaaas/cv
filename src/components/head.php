@@ -85,4 +85,11 @@ a:hover {
 @media screen {
   html { font-size: 20px; }
 }
+
+@media screen and (max-width: 30rem) {
+  html {
+    font-size: 16px;
+    padding: calc(1 * var(--p));
+  }
+}
 </style>

@@ -86,4 +86,21 @@ $backend = unserialize($this->backend);
         gap: var(--p);
     }
 }
+
+@media screen and (max-width: 30rem) {
+    .skills .body {
+        flex-direction: column;
+        gap: calc(2 * var(--p));
+    }
+
+    .skills article {
+        width: 100%;
+    }
+
+    .plangs,
+    .frontend,
+    .backend {
+        height: auto;
+    }
+}
 </style>

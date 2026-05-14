@@ -1,7 +1,7 @@
 <?php
-$plangs   = $this->plangs;
+$plangs = $this->plangs;
 $frontend = $this->frontend;
-$backend  = $this->backend;
+$backend = $this->backend;
 
 $render_list = function (iterable $items): string {
     $out = "";
@@ -16,7 +16,7 @@ $render_list = function (iterable $items): string {
     <x-counter counter="03"/>
     <div class="body">
       <article class="plangs">
-        <h3>Programming languages</h3>
+        <h3>Languages</h3>
         <ul><?= $render_list($plangs) ?></ul>
       </article>
       <article class="frontend">
@@ -24,7 +24,7 @@ $render_list = function (iterable $items): string {
         <ul><?= $render_list($frontend) ?></ul>
       </article>
       <article class="backend">
-        <h3>Backend &amp; infrastructure</h3>
+        <h3>Backend &amp; infra</h3>
         <ul><?= $render_list($backend) ?></ul>
       </article>
     </div>

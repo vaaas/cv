@@ -1,4 +1,3 @@
-<?php ?>
 <template>
   <footer>
     <span></span>
@@ -7,6 +6,7 @@
     <aside>Page 1/1</aside>
   </footer>
 </template>
+
 <style><![CDATA[
 body > footer {
     display: flex;

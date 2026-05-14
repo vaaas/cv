@@ -32,9 +32,10 @@ class SfcEngine
         $this->components_dir = rtrim($components_dir, '/');
     }
 
-    public static function init(string $components_dir): void
+    public static function init(string $components_dir): self
     {
         self::$instance = new self($components_dir);
+        return self::$instance;
     }
 
     public static function getInstance(): self
@@ -152,14 +153,4 @@ class SfcEngine
         }
         return $out;
     }
-}
-
-function render(string $name, array $props = []): string
-{
-    return SfcEngine::getInstance()->renderComponent($name, $props);
-}
-
-function render_page(string $name): string
-{
-    return SfcEngine::getInstance()->renderPage($name);
 }

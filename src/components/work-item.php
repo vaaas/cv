@@ -1,9 +1,11 @@
 <?php
-$company = htmlspecialchars($this->company ?? "");
-$title = htmlspecialchars($this->title ?? "");
-$period = htmlspecialchars($this->period ?? "");
-$bullets = $this->description->bullet ?? [];
+$item = unserialize($this->item);
+$company = htmlspecialchars($item['company'] ?? "");
+$title = htmlspecialchars($item['title'] ?? "");
+$period = htmlspecialchars($item['period'] ?? "");
+$bullets = $item['description']['bullet'] ?? [];
 ?>
+
 <template>
   <li>
     <h3>
@@ -23,6 +25,7 @@ $bullets = $this->description->bullet ?? [];
     </ul>
   </li>
 </template>
+
 <style><![CDATA[
 .work-list > ol > li {
     line-height: calc(2.5 * var(--p));

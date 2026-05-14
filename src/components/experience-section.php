@@ -1,14 +1,12 @@
-<?php
-$work_list_html = render("work-list", [
-    "title" => "Experience.",
-    "items" => $this->jobs,
-]); ?>
+<?php $jobs = unserialize($this->jobs); ?>
+
 <template>
   <section class="experience">
     <x-counter counter="01"/>
-    <?= $work_list_html ?>
+    <x-work-list title="Experience." items="<?= htmlspecialchars(serialize($jobs)) ?>"/>
   </section>
 </template>
+
 <style><![CDATA[
 .experience {
     display: grid;

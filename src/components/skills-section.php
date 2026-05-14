@@ -1,35 +1,29 @@
 <?php
-$plangs = $this->plangs;
-$frontend = $this->frontend;
-$backend = $this->backend;
-
-$render_list = function (iterable $items): string {
-    $out = "";
-    foreach ($items as $item) {
-        $out .= "<li>" . htmlspecialchars((string) $item) . "</li>";
-    }
-    return $out;
-};
+$plangs = unserialize($this->plangs);
+$frontend = unserialize($this->frontend);
+$backend = unserialize($this->backend);
 ?>
+
 <template>
   <section class="skills">
     <x-counter counter="03"/>
     <div class="body">
       <article class="plangs">
         <h3>Languages</h3>
-        <ul><?= $render_list($plangs) ?></ul>
+        <ul><?php foreach ($plangs as $item): ?><li><?= htmlspecialchars((string) $item) ?></li><?php endforeach; ?></ul>
       </article>
       <article class="frontend">
         <h3>Frontend &amp; libraries</h3>
-        <ul><?= $render_list($frontend) ?></ul>
+        <ul><?php foreach ($frontend as $item): ?><li><?= htmlspecialchars((string) $item) ?></li><?php endforeach; ?></ul>
       </article>
       <article class="backend">
         <h3>Backend &amp; infra</h3>
-        <ul><?= $render_list($backend) ?></ul>
+        <ul><?php foreach ($backend as $item): ?><li><?= htmlspecialchars((string) $item) ?></li><?php endforeach; ?></ul>
       </article>
     </div>
   </section>
 </template>
+
 <style><![CDATA[
 .skills {
     display: grid;

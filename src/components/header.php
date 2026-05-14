@@ -1,10 +1,12 @@
 <?php
+$langs = unserialize($this->langs);
 $lang_codes = [];
-foreach (($this->langs ?? []) as $lang) {
+foreach (($langs ?? []) as $lang) {
     $lang_codes[] = (string) $lang;
 }
 $langs_text = implode('/', $lang_codes);
 ?>
+
 <template>
   <header>
     <div class="title">
@@ -20,6 +22,7 @@ $langs_text = implode('/', $lang_codes);
     </section>
   </header>
 </template>
+
 <style><![CDATA[
 body > header {
     display: flex;

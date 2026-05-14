@@ -5,6 +5,7 @@ $font_url = data_url(
     asset("playfair-display/PlayfairDisplay-VariableFont_wght.ttf"),
 );
 ?>
+
 <template>
   <head>
     <meta charset="utf-8"/>
@@ -14,6 +15,7 @@ $font_url = data_url(
     <link rel="icon" href="<?= htmlspecialchars($favicon_url, ENT_XML1) ?>"/>
   </head>
 </template>
+
 <style><![CDATA[
 @font-face {
   font-family: 'Playfair Display';

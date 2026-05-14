@@ -1,14 +1,12 @@
-<?php
-$work_list_html = render("work-list", [
-    "title" => "Open-source Contributions.",
-    "items" => $this->items,
-]); ?>
+<?php $items = unserialize($this->items); ?>
+
 <template>
   <section class="foss">
     <x-counter counter="02"/>
-    <?= $work_list_html ?>
+    <x-work-list title="Open-source Contributions." items="<?= htmlspecialchars(serialize($items)) ?>"/>
   </section>
 </template>
+
 <style><![CDATA[
 .foss {
     display: grid;

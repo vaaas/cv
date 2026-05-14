@@ -7,21 +7,6 @@ function data_url(string $header, string $source): string
     return "{$header};base64,{$b64}";
 }
 
-function walk(string $dir)
-{
-    foreach (scandir($dir) as $entry) {
-        if (str_starts_with($entry, ".")) {
-            continue;
-        }
-        $pathname = $dir . "/" . $entry;
-        if (is_file($pathname)) {
-            yield $pathname;
-        } elseif (is_dir($pathname)) {
-            yield from walk($pathname);
-        }
-    }
-}
-
 function asset(string $path)
 {
     return getcwd() . "/assets/" . $path;
@@ -30,4 +15,15 @@ function asset(string $path)
 function loadXml(string $path)
 {
     return simplexml_load_file(getcwd() . "/data/" . $path);
+}
+
+function xml_to_array($xml)
+{
+    if ($xml instanceof \SimpleXMLElement) {
+        $xml = (array) $xml;
+    }
+    if (!is_array($xml)) {
+        return $xml;
+    }
+    return array_map('xml_to_array', $xml);
 }

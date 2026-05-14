@@ -16,7 +16,7 @@ $font_url = data_url(
   </head>
 </template>
 
-<style><![CDATA[
+<style>
 @font-face {
   font-family: 'Playfair Display';
   src: url(<?= $font_url ?>);
@@ -84,4 +84,4 @@ a:hover {
 @media screen {
   html { font-size: 20px; }
 }
-]]></style>
+</style>

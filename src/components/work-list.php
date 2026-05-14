@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<style><![CDATA[
+<style>
 .work-list h2 {
     line-height: 1em;
     text-transform: lowercase;
@@ -20,4 +20,4 @@
     flex-direction: column;
     gap: calc(2 * var(--p));
 }
-]]></style>
+</style>

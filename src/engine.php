@@ -1,5 +1,29 @@
 <?php
-require_once __DIR__ . '/utils.php';
+class ParsedComponent
+{
+    public function __construct(
+        public readonly string $templateHtml,
+        public readonly string $css
+    ) {}
+}
+
+class ComponentParser
+{
+    public function parse(string $output, string $componentName): ParsedComponent
+    {
+        if (!preg_match('/<template>(.*?)<\/template>/s', $output, $matches)) {
+            throw new \RuntimeException("Component '$componentName' has no <template> element.");
+        }
+        $templateHtml = $matches[1];
+
+        $css = '';
+        if (preg_match('/<style>(.*?)<\/style>/s', $output, $matches)) {
+            $css = trim($matches[1]);
+        }
+
+        return new ParsedComponent($templateHtml, $css);
+    }
+}
 
 #[\AllowDynamicProperties]
 class ComponentContext
@@ -25,11 +49,14 @@ class ComponentContext
 class SfcEngine
 {
     private string $components_dir;
+    private ComponentParser $parser;
+    private array $css = [];
     private static ?SfcEngine $instance = null;
 
     private function __construct(string $components_dir)
     {
         $this->components_dir = rtrim($components_dir, '/');
+        $this->parser = new ComponentParser();
     }
 
     public static function init(string $components_dir): self
@@ -48,19 +75,19 @@ class SfcEngine
 
     public function renderPage(string $name): string
     {
-        $GLOBALS['component_css'] = [];
+        $this->css = [];
         $html = $this->renderComponent($name, []);
 
         $dom = new DOMDocument('1.0', 'UTF-8');
         @$dom->loadXML($html);
 
-        $css = implode("\n", $GLOBALS['component_css']);
+        $css = implode("\n", $this->css);
         if ($css !== '') {
             $xpath = new DOMXPath($dom);
             $head = $xpath->query('//head')->item(0);
             if ($head !== null) {
                 $style = $dom->createElement('style');
-                $style->appendChild($dom->createCDATASection($css));
+                $style->appendChild($dom->createTextNode($css));
                 $head->appendChild($style);
             }
         }
@@ -78,35 +105,22 @@ class SfcEngine
         $ctx = new ComponentContext($path, $props);
         $output = $ctx->evaluate();
 
+        $parsed = $this->parser->parse($output, $name);
+
+        if (!isset($this->css[$name]) && $parsed->css !== '') {
+            $this->css[$name] = $parsed->css;
+        }
+
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $wrapped = '<sfc>' . $output . '</sfc>';
+        $wrapped = '<sfc>' . $parsed->templateHtml . '</sfc>';
         $result = @$dom->loadXML($wrapped);
         if ($result === false) {
-            throw new \RuntimeException("XML parse error in component '$name'. Output was:\n" . substr($output, 0, 200));
+            throw new \RuntimeException("XML parse error in component '$name'. Output was:\n" . substr($parsed->templateHtml, 0, 200));
         }
 
-        if (!isset($GLOBALS['component_css'][$name])) {
-            $xpath = new DOMXPath($dom);
-            $style_nodes = $xpath->query('/sfc/style');
-            if ($style_nodes->length > 0) {
-                $style_node = $style_nodes->item(0);
-                $css = '';
-                foreach ($style_node->childNodes as $child) {
-                    $css .= $child->data ?? $dom->saveXML($child);
-                }
-                $GLOBALS['component_css'][$name] = trim($css);
-            }
-        }
-
-        $xpath = new DOMXPath($dom);
-        $template_nodes = $xpath->query('/sfc/template');
-        if ($template_nodes->length === 0) {
-            throw new \RuntimeException("Component '$name' has no <template> element.");
-        }
-        $template = $template_nodes->item(0);
-
-        $this->substituteCustomElements($template, $dom);
-        return $this->innerXml($template, $dom);
+        $root = $dom->documentElement;
+        $this->substituteCustomElements($root, $dom);
+        return $this->innerXml($root, $dom);
     }
 
     private function substituteCustomElements(DOMElement $root, DOMDocument $doc): void
@@ -153,4 +167,32 @@ class SfcEngine
         }
         return $out;
     }
+}
+
+function data_url(string $header, string $source): string
+{
+    $contents = file_get_contents($source);
+    $b64 = base64_encode($contents);
+    return "{$header};base64,{$b64}";
+}
+
+function asset(string $path)
+{
+    return getcwd() . "/assets/" . $path;
+}
+
+function loadXml(string $path)
+{
+    return simplexml_load_file(getcwd() . "/data/" . $path);
+}
+
+function xml_to_array($xml)
+{
+    if ($xml instanceof \SimpleXMLElement) {
+        $xml = (array) $xml;
+    }
+    if (!is_array($xml)) {
+        return $xml;
+    }
+    return array_map('xml_to_array', $xml);
 }

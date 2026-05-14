@@ -24,7 +24,7 @@ $backend = unserialize($this->backend);
   </section>
 </template>
 
-<style><![CDATA[
+<style>
 .skills {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -86,4 +86,4 @@ $backend = unserialize($this->backend);
         gap: var(--p);
     }
 }
-]]></style>
+</style>

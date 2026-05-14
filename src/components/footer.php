@@ -7,7 +7,7 @@
   </footer>
 </template>
 
-<style><![CDATA[
+<style>
 body > footer {
     display: flex;
     justify-content: space-between;
@@ -43,4 +43,4 @@ body > footer aside {
         display: none;
     }
 }
-]]></style>
+</style>

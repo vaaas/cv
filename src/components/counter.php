@@ -2,7 +2,7 @@
   <aside class="counter">(<?= htmlspecialchars($this->counter) ?>)</aside>
 </template>
 
-<style><![CDATA[
+<style>
 .counter {
     user-select: none;
     font-size: calc(1.5 * var(--p));
@@ -13,4 +13,4 @@
         display: none;
     }
 }
-]]></style>
+</style>

@@ -26,7 +26,7 @@ $bullets = $item['description']['bullet'] ?? [];
   </li>
 </template>
 
-<style><![CDATA[
+<style>
 .work-list > ol > li {
     line-height: calc(2.5 * var(--p));
 }
@@ -79,4 +79,4 @@ $bullets = $item['description']['bullet'] ?? [];
         gap: var(--p);
     }
 }
-]]></style>
+</style>

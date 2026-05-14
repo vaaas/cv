@@ -23,7 +23,7 @@ $langs_text = implode('/', $lang_codes);
   </header>
 </template>
 
-<style><![CDATA[
+<style>
 body > header {
     display: flex;
     align-items: baseline;
@@ -67,4 +67,4 @@ body > header .role {
         display: block;
     }
 }
-]]></style>
+</style>

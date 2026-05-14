@@ -1,5 +1,5 @@
 <?php
-$xml  = xml_to_array(loadXml('experience.xml'));
+$xml  = XmlUtil::toArray(XmlUtil::loadFile(getcwd() . '/data/experience.xml'));
 $jobs = array_map(fn($x) => (array) $x, $xml['job']);
 $foss = array_map(fn($x) => (array) $x, $xml['foss']);
 ?>

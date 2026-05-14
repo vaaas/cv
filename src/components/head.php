@@ -13,6 +13,7 @@ $font_url = data_url(
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content="CV of Vasileios Pasialiokis, senior full-stack engineer, Javascript, Typescript, Vue, PHP, Laravel"/>
     <link rel="icon" href="<?= htmlspecialchars($favicon_url, ENT_XML1) ?>"/>
+    <css/>
   </head>
 </template>
 

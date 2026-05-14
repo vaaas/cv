@@ -1,4 +1,33 @@
 <?php
+class XmlUtil
+{
+    public static function loadFile(string $path): \SimpleXMLElement
+    {
+        return simplexml_load_file($path);
+    }
+
+    public static function toArray($xml)
+    {
+        if ($xml instanceof \SimpleXMLElement) {
+            $xml = (array) $xml;
+        }
+        if (!is_array($xml)) {
+            return $xml;
+        }
+        return array_map(fn($item) => self::toArray($item), $xml);
+    }
+
+    public static function createDocument(string $xml, string $context = ''): \DOMDocument
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $result = @$dom->loadXML($xml);
+        if ($result === false) {
+            throw new \RuntimeException("XML parse error" . ($context ? " in $context" : '') . ". Content was:\n" . substr($xml, 0, 200));
+        }
+        return $dom;
+    }
+}
+
 class ParsedComponent
 {
     public function __construct(
@@ -51,26 +80,11 @@ class SfcEngine
     private string $components_dir;
     private ComponentParser $parser;
     private array $css = [];
-    private static ?SfcEngine $instance = null;
 
-    private function __construct(string $components_dir)
+    public function __construct(string $components_dir)
     {
         $this->components_dir = rtrim($components_dir, '/');
         $this->parser = new ComponentParser();
-    }
-
-    public static function init(string $components_dir): self
-    {
-        self::$instance = new self($components_dir);
-        return self::$instance;
-    }
-
-    public static function getInstance(): self
-    {
-        if (self::$instance === null) {
-            throw new \RuntimeException('SfcEngine not initialized. Call SfcEngine::init() first.');
-        }
-        return self::$instance;
     }
 
     public function renderPage(string $name): string
@@ -78,21 +92,35 @@ class SfcEngine
         $this->css = [];
         $html = $this->renderComponent($name, []);
 
-        $dom = new DOMDocument('1.0', 'UTF-8');
-        @$dom->loadXML($html);
+        $dom = XmlUtil::createDocument($html, "page '$name'");
 
-        $css = implode("\n", $this->css);
-        if ($css !== '') {
-            $xpath = new DOMXPath($dom);
-            $head = $xpath->query('//head')->item(0);
-            if ($head !== null) {
-                $style = $dom->createElement('style');
-                $style->appendChild($dom->createTextNode($css));
-                $head->appendChild($style);
-            }
-        }
+        $this->injectStyles($dom);
 
         return '<!DOCTYPE html>' . "\n" . $dom->saveHTML($dom->documentElement);
+    }
+
+    private function injectStyles(DOMDocument $dom): void
+    {
+        $xpath = new DOMXPath($dom);
+        $css_elements = $xpath->query('//css');
+
+        if ($css_elements->length === 0) {
+            return;
+        }
+
+        $css = implode("\n", $this->css);
+        if ($css === '') {
+            return;
+        }
+
+        $style = $dom->createElement('style');
+        $style->appendChild($dom->createTextNode($css));
+
+        foreach ($css_elements as $el) {
+            if ($el->parentNode !== null) {
+                $el->parentNode->replaceChild($style, $el);
+            }
+        }
     }
 
     public function renderComponent(string $name, array $props): string
@@ -111,12 +139,7 @@ class SfcEngine
             $this->css[$name] = $parsed->css;
         }
 
-        $dom = new DOMDocument('1.0', 'UTF-8');
-        $wrapped = '<sfc>' . $parsed->templateHtml . '</sfc>';
-        $result = @$dom->loadXML($wrapped);
-        if ($result === false) {
-            throw new \RuntimeException("XML parse error in component '$name'. Output was:\n" . substr($parsed->templateHtml, 0, 200));
-        }
+        $dom = XmlUtil::createDocument('<sfc>' . $parsed->templateHtml . '</sfc>', "component '$name'");
 
         $root = $dom->documentElement;
         $this->substituteCustomElements($root, $dom);
@@ -144,8 +167,7 @@ class SfcEngine
 
             $rendered_html = $this->renderComponent($component_name, $props);
 
-            $tmp = new DOMDocument('1.0', 'UTF-8');
-            @$tmp->loadXML('<fragment>' . $rendered_html . '</fragment>');
+            $tmp = XmlUtil::createDocument('<fragment>' . $rendered_html . '</fragment>');
 
             $parent = $el->parentNode;
             $ref = $el->nextSibling;
@@ -181,18 +203,3 @@ function asset(string $path)
     return getcwd() . "/assets/" . $path;
 }
 
-function loadXml(string $path)
-{
-    return simplexml_load_file(getcwd() . "/data/" . $path);
-}
-
-function xml_to_array($xml)
-{
-    if ($xml instanceof \SimpleXMLElement) {
-        $xml = (array) $xml;
-    }
-    if (!is_array($xml)) {
-        return $xml;
-    }
-    return array_map('xml_to_array', $xml);
-}

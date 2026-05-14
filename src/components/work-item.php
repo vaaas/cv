@@ -64,7 +64,7 @@ $bullets = is_array($raw_bullets) ? $raw_bullets : [$raw_bullets];
 }
 
 .work-item .company:has(+ span) {
-    min-width: 10ch;
+    min-width: 12ch;
 }
 
 @media screen and (max-width: 60rem) {

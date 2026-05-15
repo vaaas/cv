@@ -1,10 +1,10 @@
 <?php
 $langs = unserialize($this->langs);
 $lang_codes = [];
-foreach (($langs ?? []) as $lang) {
+foreach ($langs ?? [] as $lang) {
     $lang_codes[] = (string) $lang;
 }
-$langs_text = implode('/', $lang_codes);
+$langs_text = implode("/", $lang_codes);
 ?>
 
 <template>
@@ -12,7 +12,10 @@ $langs_text = implode('/', $lang_codes);
     <div class="title">
       <h1>Vasileios Pasialiokis</h1>
       <div class="role">
-        full-stack developer<?php if ($langs_text): ?><span class="langs"> · <?= htmlspecialchars($langs_text) ?></span><?php endif; ?>
+        full-stack engineer
+        <?php if ($langs_text): ?>
+            <span class="langs"> · <?= htmlspecialchars($langs_text) ?></span>
+        <?php endif; ?>
       </div>
     </div>
     <section>

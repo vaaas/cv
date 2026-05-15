@@ -3,7 +3,10 @@
 <template>
   <section class="experience">
     <x-counter counter="01"/>
-    <x-work-list title="Experience." items="<?= htmlspecialchars(serialize($jobs)) ?>"/>
+    <x-work-list
+        title="Experience."
+        items="<?= htmlspecialchars(serialize($jobs)) ?>"
+    />
   </section>
 </template>
 

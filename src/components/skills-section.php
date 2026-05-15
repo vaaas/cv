@@ -10,15 +10,27 @@ $backend = unserialize($this->backend);
     <div class="body">
       <article class="plangs">
         <h3>Languages</h3>
-        <ul><?php foreach ($plangs as $item): ?><li><?= htmlspecialchars((string) $item) ?></li><?php endforeach; ?></ul>
+        <ul>
+            <?php foreach ($plangs as $item): ?>
+                <li><?= htmlspecialchars((string) $item) ?></li>
+            <?php endforeach; ?>
+        </ul>
       </article>
       <article class="frontend">
         <h3>Frontend &amp; libraries</h3>
-        <ul><?php foreach ($frontend as $item): ?><li><?= htmlspecialchars((string) $item) ?></li><?php endforeach; ?></ul>
+        <ul>
+            <?php foreach ($frontend as $item): ?>
+                <li><?= htmlspecialchars((string) $item) ?></li>
+            <?php endforeach; ?>
+        </ul>
       </article>
       <article class="backend">
         <h3>Backend &amp; infra</h3>
-        <ul><?php foreach ($backend as $item): ?><li><?= htmlspecialchars((string) $item) ?></li><?php endforeach; ?></ul>
+        <ul>
+            <?php foreach ($backend as $item): ?>
+                <li><?= htmlspecialchars((string) $item) ?></li>
+            <?php endforeach; ?>
+        </ul>
       </article>
     </div>
   </section>

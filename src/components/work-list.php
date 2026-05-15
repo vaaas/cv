@@ -3,7 +3,13 @@
 <template>
   <div class="work-list">
     <h2><?= htmlspecialchars($this->title) ?></h2>
-    <ol><?php foreach ($items as $item): ?><x-work-item item="<?= htmlspecialchars(serialize((array) $item)) ?>"/><?php endforeach; ?></ol>
+    <ol>
+        <?php foreach ($items as $item): ?>
+            <x-work-item
+                item="<?= htmlspecialchars(serialize((array) $item)) ?>"
+            />
+        <?php endforeach; ?>
+    </ol>
   </div>
 </template>
 

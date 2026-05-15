@@ -9,7 +9,7 @@ $font_url = data_url(
 <template>
   <head>
     <meta charset="utf-8"/>
-    <title>Vasileios Pasioliokis - Software Developer</title>
+    <title>Vasileios Pasioliokis - Full-stack Engineer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content="CV of Vasileios Pasialiokis, senior full-stack engineer, Javascript, Typescript, Vue, PHP, Laravel"/>
     <link rel="icon" href="<?= htmlspecialchars($favicon_url, ENT_XML1) ?>"/>
